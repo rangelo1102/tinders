@@ -1,133 +1,189 @@
-<?php
-$host = "localhost";
-$user = "root";
-$password = "";
-$db ="demo";
-
-
-?>
-
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Login</title>
+<title>Tinders</title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
 	<style>
-		body {
-			background-color: dimgray;
-		}
-		#TindersTitle {
+	#TindersTitle {
 			position: absolute;
 			font-size: 20px;
-			left: 30px;
-			top: 5px;
-			color: white;
 			font-family: raleway;
 			font-weight: bold;
+			left: 20px;
+			top: 20px;
+			text-decoration: none;
 		}
-		
-		#logo {
+	#RRestock {
+			font-size: 20px;
 			position: absolute;
-			left: 720px;
-			top: 175px;
-			width: 75px;
-			height: 75px;
-		}
-		#Tinders {
-			position: absolute;
-			font-size: 52px;
-			left: 650px;
-			top: 200px;
-			color: white;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#username input [type='text']{
-			width: 100%;
-			margin: 8px 0;
-		}
-		#username {
-			position: absolute;
+			top: 25px;
 			left: 550px;
-			top: 340px;
-			width: 425px;
-			height: 25px;
-			background-color: gray;
-			border: none;
-		}
-		#username::placeholder{
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
-			color: white;
-		}
-		#password input [type='text']{
-			width: 100%;
-			margin: 8px 0;
-		}
-		#password {
-			position: absolute;
-			left: 550px;
-			top: 410px;
-			width: 425px;
-			height: 25px;
-			background-color: gray;
-			border: none;
-		}
-		#password::placeholder{
-			font-family: raleway;
-			font-weight: bold;
-			color: white;
-		}
-		#loginButton {
-			width: 300px;
-			height:300px;
-		}
-		#loginText {
-			font-family: raleway;
-			font-size: 52px;
-			position: absolute;
-			left: 690px;
-			top: 425px;
-			font-weight: bold;
-			color: antiquewhite;
-		}
-		#loginButton{
-			height: 75px;
-			width: 175px;
-			background-color: grey;
-			position: absolute;
-			top: 470px;
-			left: 670px;
-			border-radius: 10%;
 		}
 		a:visited {
-			color: antiquewhite;
+			color: black;
 		}
-		#signUp {
-			position: absolute;
+		a:link {
+			color: black;
+		}
+	#RChange {
 			font-size: 20px;
-			left: 1400px;
-			top: 5px;
-			color: white;
+			position: absolute;
+			top: 25px;
+			left: 740px;
+			text-decoration: none;
 			font-family: raleway;
-			font-weight: bold;			
+			font-weight: bold;
+		}
+	#RSell {
+			font-size: 20px;
+			position: absolute;
+			top: 25px;
+			left: 950px;
+			text-decoration: none;
+			font-family: raleway;
+			font-weight: bold;
+		}
+	#RLogout {
+			font-size: 20px;
+			position: absolute;
+			left: 1390px;
+			top: 29px;
+			text-decoration: none;
+			font-family: raleway;
+			font-weight: bold;
+		}
+	#CircleRestock {
+			height: 200px;
+			width: 200px;
+			background-color: dimgray;
+			border-radius: 50%;
+			position: absolute;
+			top: 230px;
+			left: 270px;
+		}
+	#Head {
+			position: absolute;
+			top: 50px;
+			left: 540px;
+			font-size: 52px;
+			font-family: raleway;
+			font-weight: bold;
+		}
+	
+	#CirlceChange {
+			height: 200px;
+			width: 200px;
+			background-color: dimgray;
+			border-radius: 50%;
+			position: absolute;
+			top: 230px;
+			left: 670px;
+		}
+	#CirlceSell {
+			height: 200px;
+			width: 200px;
+			background-color: dimgray;
+			border-radius: 50%;
+			position: absolute;
+			top: 230px;
+			left: 1090px;
+		}
+	#RestockLabel {
+			font-size: 52px;
+			position: absolute;
+			top: 410px;
+			left: 255px;
+			font-family: raleway;
+			font-weight: bold;
+			color: #383737;
+		}
+	#ChangeLabel {
+			font-size: 52px;
+			position: absolute;
+			top: 410px;
+			left: 662px;
+			font-family: raleway;
+			font-weight: bold;
+			color: #383737;
+		}
+	#SellLabel {
+			font-size: 52px;
+			position: absolute;
+			top: 410px;
+			left: 1127px;		
+			font-family: raleway;
+			font-weight: bold;
+			color: #383737;
+		}
+	#RestockDesc {
+			text-align: center;
+			position: absolute;
+			top: 520px;
+			left: 225px;
+		}
+	#ChangeDesc {
+			text-align: center;
+			position: absolute;
+			top: 520px;
+			left: 665px;
+		}
+	#SellDesc {
+			text-align: center;
+			position: absolute;
+			top: 520px;
+			left: 1080px;
+		}
+	#ReportCirc {
+			background-color: dimgray;
+			height: 75px;
+			width: 75px;
+			position: absolute;
+			border-radius: 50%;
+			top: 650px;
+			left: 590px;
+		}
+	#ReportLabel {
+			font-size: 52px;
+			position: absolute;
+			top: 595px;
+			left: 680px;
+			font-family: raleway;
+			font-weight: bold;
+			color: #383737;
+		}
+	#ReportDesc {
+			text-align: left;
+			position: absolute;
+			left: 683px;
+			top: 690px;
 		}
 	</style>
 </head>
-	
+
 <body>
-	<a href = "Login.html"><p id = "TindersTitle"> TINDERS </p></a>
-	<p id = "Tinders"> TINDERS</p>
-	<a href = "Sign Up.html"><p id = "signUp"> SIGN UP</p></a>
-	<img src = "logo.png" id = "logo"></img>
-	<form method = "POST" action="#">
-	<input type="text" id = "username" name="username" placeholder="  USERNAME">
-	<input type="text" id = "password" name="password" placeholder="  PASSWORD">
-	</form>
-	<a href = "Index.html"><img id = "loginButton"></img></a>
-	<a href = "Index.html"><p id = "loginText">log in</p></a>
+	<a href = "Index.html" id = "TindersTitle">TINDERS</a>
+	<a href = "Restock.html" id = "RRestock"> RESTOCK </a>
+	<a href = "Update Stock.html" id = "RChange"> CHANGE </a>
+	<a href = "Sell.html" id = "RSell"> SELL </a>
+	<h1 id = "Head"> Morning, I suppose </h1>
+	<a href = "Login.html" id = "RLogout"> LOG OUT</a>
+	<a href = "Restock.html"><div id = "CircleRestock"></div></a>
+	<a href = "Update Stock.html"><div id = "CirlceChange"></div></a>
+	<a href = "Sell.html"><div id = "CirlceSell"></div> </a>
+	<p id = "RestockLabel">RESTOCK</p>
+	<p id = "ChangeLabel"> CHANGE</p>
+	<p id = "SellLabel">SELL</p>
+	<p id = "RestockDesc">New day, new stock. <br>Click here to update your stock for the day. <br></p>
+	<p id = "ChangeDesc"> New, sudden changes? <br>Click here to update your stock.</p>
+	<p id = "SellDesc">Sales are always welcome. <br> Click here to record a new purchase. </p>
+	<div id = "ReportCirc"></div>
+	<p id = "ReportLabel">REPORT</p>
+	<p id = "ReportDesc"> How well did we do today? </p>
 </body>
 </html>
