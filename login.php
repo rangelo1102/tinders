@@ -27,7 +27,8 @@ if($row["username"]== $username && $row["password"]== $password){
 	header('Location: Home.html');
 }else{
 	echo "<script type='text/javascript'>
-	alert('Login Failed. Please Check Your Goddamn Password');
+	window.confirm('Login Failed. Please Check Your Goddamn Password');
+	window.location.href = 'index.html';
 	</script>
 	";
 
