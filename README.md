@@ -1,6 +1,5 @@
 # tinders
-CS5 Canteen Management Project
-This is a canteen management system in partial fullfillment of the requirements of Computer Science 5.
+This is a canteen management system developed in partial fullfillment of the requirements of Computer Science 5.
 
 Developed by:
 Kathleen Mae Q. Basa;
