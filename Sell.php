@@ -227,7 +227,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<a href = "Restock.php"><p id = "RRestock"> RESTOCK </p></a>
 	<a href = "Update Stock.php"><p id = "RChange"> CHANGE </p></a>
 	<a href = "Sell.php"><p id = "RSell"> SELL </p></a>
-	<a href = "Login.php"><p id = "RLogout"> LOG OUT</p></a>
+	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
 
 	<!--New Product-->
 	<p id = "Product"> new product</p>

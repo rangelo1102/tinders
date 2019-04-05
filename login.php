@@ -4,7 +4,7 @@ session_start();
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db ="tinders";
+$db = "tinders";
 
 //initalizing or getting the values 
 $username = filter_input(INPUT_POST, 'username');
@@ -19,10 +19,14 @@ if ($conn->connect_error) {
 //(Queeer)y
 $query = "SELECT username, password FROM login";
 $result = $conn->query($query);
+
+
 // or die ("failed to query database ".mysql_error());
 
 //check if correct password
 $row = mysqli_fetch_array($result);
+
+
 
 if($row["username"]== $username && $row["password"]== $password){
 	header('Location: Home.php');

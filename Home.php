@@ -179,7 +179,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<a href = "Update Stock.php" id = "RChange"> CHANGE </a>
 	<a href = "Sell.php" id = "RSell"> SELL </a>
 	<h1 id = "Head"> Morning, I suppose </h1>
-	<a href = "Login.php" id = "RLogout"> LOG OUT</a>
+	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
 	<a href = "Restock.php"><div id = "CircleRestock"></div></a>
 	<a href = "Update Stock.php"><div id = "CirlceChange"></div></a>
 	<a href = "Sell.php"><div id = "CirlceSell"></div> </a>
