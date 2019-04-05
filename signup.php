@@ -1,6 +1,6 @@
 <?php
 //SIGN UP PAGE PHP CODE; NOT YET FINAL
-
+session_start();
 //credentials and stuff
 $host = "localhost";
 $user = "root";
@@ -8,9 +8,9 @@ $pass = "";
 $db ="tinders";
 
 // initialize
-$uname = filter_input(INPUT_POST, 'newUser');
+$uname = filter_input(INPUT_POST, 'newUsername');
 $pword = filter_input(INPUT_POST, 'newPass');
-$cPass = filter_input(INPUT_POST, 'confirmPass');
+$cPass = filter_input(INPUT_POST, 'confPass');
 
 // connect to the database
 $conn = new mysqli($host,$user,$pass,$db);
@@ -56,7 +56,7 @@ if (isset($_POST['registerUser'])) {
 	";
 	}
   
-   $user_check_query = "SELECT * FROM users WHERE username='$uname' LIMIT 1";
+  $user_check_query = "SELECT * FROM login WHERE username='$uname' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
@@ -70,15 +70,15 @@ if (isset($_POST['registerUser'])) {
   if (count($errors) == 0) {
   	$password = md5($pword);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO users (username, email, password) 
-  			  VALUES('$uname', ''$pword')";
+  	//$query = "INSERT INTO users (username, email, password) 
+  			  //VALUES('$uname', ''$pword')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $uname;
   	$_SESSION['success'] = "You are now logged in";
   	echo "<script type='text/javascript'>
 		window.confirm('ok cool ur input's good n all);
 		window.location.href = 'Home.php';
-		</script>
+		</script>";
   }
 }
 ?>
