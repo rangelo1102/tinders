@@ -23,8 +23,8 @@ $result = $conn->query($query);
 
 //check if correct password
 $row = mysqli_fetch_array($result);
-
-if($row["username"]== $username && $row["password"]== $password){
+$hashedpassword = md5($password);
+if($row["username"]== $username && $row["password"]== $hashedpassword){
 	header('Location: Home.php');
 	$_SESSION['user_id'] = $row["id"];
 }else{
