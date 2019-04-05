@@ -118,14 +118,10 @@
 			top: 500px;
 			left: 900px;
 			border-radius: 10%;
-		}
-		#signUpButtonText{
 			font-family: raleway;
-			font-size: 30px;
-			position: absolute;
-			top: 475px;
-			left: 930px;
 			font-weight: bold;
+			color: white;
+			font-size: 30px;
 		}
 	</style>
 </head>
@@ -138,11 +134,12 @@
 <p id = "newPassTitle"> password: </p>
 <p id = "confPassTitle"> confirm password: </p>
 <img src = "logo.png" id = "logo"> </img>
-<form>
-<input type = "text" id ="newUsername" name = "newUser" placeholder = " USERNAME" required>
-<input type = "text" id = "newPass" name = "newPass" placeholder = " PASSWORD" required>
-<input type = "text" id = "confPass" name = "confirmPass" placeholder = " CONFIRM PASSWORD" required>
-<p id = "signUpButtonText"><button type="submit" id = "signUpButton" >sign up</button> </p>
+	
+<form method="POST" action = "signup.php">
+	<input type = "text" id ="newUsername" name = "newUser" placeholder = " USERNAME">
+	<input type = "text" id = "newPass" name = "newPass" placeholder = " PASSWORD">
+	<input type = "text" id = "confPass" name = "confirmPass" placeholder = " CONFIRM PASSWORD">
+<p><button type="submit" id = "signUpButton" name = "registerUser">sign up</button></p>
 </form>
 </body>
 </html>
