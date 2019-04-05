@@ -1,7 +1,6 @@
 <?php
 //SIGN UP PAGE PHP CODE; NOT YET FINAL
 
-session_start();
 //credentials and stuff
 $host = "localhost";
 $user = "root";
@@ -9,9 +8,9 @@ $pass = "";
 $db ="tinders";
 
 // initialize
-$uname = $_POST['newUser'];
-$pword = $_POST['newPass'];
-$cPass = $_POST['confirmPass'];
+$uname = filter_input(INPUT_POST, 'newUser');
+$pword = filter_input(INPUT_POST, 'newPass');
+$cPass = filter_input(INPUT_POST, 'confirmPass');
 
 // connect to the database
 $conn = new mysqli($host,$user,$pass,$db);

@@ -17,20 +17,16 @@ if ($conn->connect_error) {
 }
 
 //(Queeer)y
-$query = "SELECT username, password FROM login";
+$query = "SELECT id, username, password FROM login";
 $result = $conn->query($query);
-
-
 // or die ("failed to query database ".mysql_error());
 
 //check if correct password
 $row = mysqli_fetch_array($result);
 
-
-
 if($row["username"]== $username && $row["password"]== $password){
 	header('Location: Home.php');
-	$_SESSION['user_id'] = $user->ID;
+	$_SESSION['user_id'] = $row["id"];
 }else{
 	echo "<script type='text/javascript'>
 	window.confirm('Login Failed. Please Check Your Goddamn Password');

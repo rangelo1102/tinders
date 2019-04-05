@@ -136,9 +136,9 @@
 <img src = "logo.png" id = "logo"> </img>
 	
 <form action = "signup.php" method="post">
-	<input type = "text" id ="newUsername" name = "newUser" placeholder = " USERNAME">
-	<input type = "text" id = "newPass" name = "newPass" placeholder = " PASSWORD">
-	<input type = "text" id = "confPass" name = "confirmPass" placeholder = " CONFIRM PASSWORD">
+	<input type = "text" id ="newUsername" name = "newUser" placeholder = " USERNAME" required>
+	<input type = "text" id = "newPass" name = "newPass" placeholder = " PASSWORD" required>
+	<input type = "text" id = "confPass" name = "confirmPass" placeholder = " CONFIRM PASSWORD" required>
 <p><button type="submit" id = "signUpButton">sign up</button></p>
 </form>
 </body>
