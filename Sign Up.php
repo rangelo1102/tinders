@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -12,7 +12,7 @@
 			font-size: 20px;
 			left: 30px;
 			top: 5px;
-			color: black;
+			color: white;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -46,6 +46,7 @@
 			font-family: raleway;
 			font-size: 30px;
 			font-weight: bold;
+			color: white;
 		}
 		#newPassTitle {
 			position: absolute;
@@ -54,6 +55,7 @@
 			font-family: raleway;
 			font-size: 30px;
 			font-weight: bold;
+			color: white;
 		}
 		#newPass {
 			position: absolute;
@@ -76,6 +78,7 @@
 			font-family: raleway;
 			font-size: 30px;
 			font-weight: bold;
+			color: white;
 		}
 		#confPass {
 			position: absolute;
@@ -96,7 +99,7 @@
 			font-size: 20px;
 			left: 1400px;
 			top: 5px;
-			color: black;
+			color: white;
 			font-family: raleway;
 			font-weight: bold;			
 		}
@@ -129,18 +132,17 @@
 
 <body>
 <p id = "TindersTitle"> TINDERS </p>
-<a href = "Login.html"><p id = "login"> LOG IN </p> </a>
+<a href = "Index.php"><p id = "login"> LOG IN </p> </a>
 <p id = "Tinders"> TINDERS </p>
 <p id = "newUserTitle"> new username: </p>
 <p id = "newPassTitle"> password: </p>
 <p id = "confPassTitle"> confirm password: </p>
 <img src = "logo.png" id = "logo"> </img>
 <form>
-<input type = "text" id ="newUsername" name = "newUsername" placeholder = " USERNAME">
-<input type = "text" id = "newPass" name = "newPassword" placeholder = " PASSWORD">
-<input type = "text" id = "confPass" name = "confirmPassword" placeholder = " CONFIRM PASSWORD">
-<img id = "signUpButton"> </img>
-<p id = "signUpButtonText"> sign up </p>
+<input type = "text" id ="newUsername" name = "newUser" placeholder = " USERNAME" required>
+<input type = "text" id = "newPass" name = "newPass" placeholder = " PASSWORD" required>
+<input type = "text" id = "confPass" name = "confirmPass" placeholder = " CONFIRM PASSWORD" required>
+<p id = "signUpButtonText"><button type="submit" id = "signUpButton" >sign up</button> </p>
 </form>
 </body>
 </html>
