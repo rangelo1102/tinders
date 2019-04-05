@@ -9,7 +9,7 @@ $db ="tinders";
 //initalizing or getting the values 
 $username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'password');
-
+]
 //connecting to db
 $conn = new mysqli($host,$user,$pass,$db);
 if ($conn->connect_error) {
