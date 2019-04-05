@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
 <meta charset="utf-8">
 <title>Login</title>
@@ -74,10 +72,6 @@
 			font-weight: bold;
 			color: white;
 		}
-		#loginButton {
-			width: 300px;
-			height:300px;
-		}
 		#loginText {
 			font-family: raleway;
 			font-size: 52px;
@@ -88,13 +82,16 @@
 			color: antiquewhite;
 		}
 		#loginButton{
-			height: 75px;
-			width: 175px;
 			background-color: grey;
+			font-family: raleway;
+			height: 80px;
+			width: 200px;
+			font-weight: bold;
+			font-size: 50px;
 			position: absolute;
-			top: 470px;
-			left: 670px;
-			border-radius: 10%;
+			border-radius: 20px;
+			left: 660px;
+			top: 450px;
 		}
 		a:visited {
 			color: antiquewhite;
@@ -120,8 +117,7 @@
 	<form method = "POST" action="login.php">
 		<input type="text" id = "username" name="username" placeholder="  USERNAME" required>
 		<input type="password" id = "password" name="password" placeholder="  PASSWORD" required>
-
-		<img id = "loginButton"></img><p id = "loginText"><button type="submit"> Login </button></p>
+		<p><button type="submit"  id = "loginButton"> Log-in </button></p>
 </form>
 	
 	
