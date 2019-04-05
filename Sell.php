@@ -213,14 +213,14 @@
 <body>
 	<p> </p>
 	<!--Ribbon-->
-	<a href = "Home.html"><p id = "TindersTitle">TINDERS</p></a>
+	<a href = "Home.php"><p id = "TindersTitle">TINDERS</p></a>
 	<p id = "Change">SELL</p>
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
-	<a href = "Restock.html"><p id = "RRestock"> RESTOCK </p></a>
-	<a href = "Update Stock.html"><p id = "RChange"> CHANGE </p></a>
-	<a href = "Sell.html"><p id = "RSell"> SELL </p></a>
-	<a href = "Login.html"><p id = "RLogout"> LOG OUT</p></a>
+	<a href = "Restock.php"><p id = "RRestock"> RESTOCK </p></a>
+	<a href = "Update Stock.php"><p id = "RChange"> CHANGE </p></a>
+	<a href = "Sell.php"><p id = "RSell"> SELL </p></a>
+	<a href = "Login.php"><p id = "RLogout"> LOG OUT</p></a>
 
 	<!--New Product-->
 	<p id = "Product"> new product</p>

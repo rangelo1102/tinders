@@ -25,12 +25,12 @@ $result = $conn->query($query);
 $row = mysqli_fetch_array($result);
 
 if($row["username"]== $username && $row["password"]== $password){
-	header('Location: Home.html');
+	header('Location: Home.php');
 	$_SESSION['user_id'] = $user->ID;
 }else{
 	echo "<script type='text/javascript'>
 	window.confirm('Login Failed. Please Check Your Goddamn Password');
-	window.location.href = 'index.html';
+	window.location.href = 'index.php';
 	</script>
 	";
 
