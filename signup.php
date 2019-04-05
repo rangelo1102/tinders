@@ -8,9 +8,11 @@ $pass = "";
 $db ="tinders";
 
 // initialize
-$uname = filter_input(INPUT_POST, 'newUsername');
+$uname = filter_input(INPUT_POST, 'newUser');
 $pword = filter_input(INPUT_POST, 'newPass');
-$cPass = filter_input(INPUT_POST, 'confPass');
+$cPass = filter_input(INPUT_POST, 'confirmPass');
+
+//echo $uname, $pword, $cPass;
 
 // connect to the database
 $conn = new mysqli($host,$user,$pass,$db);
@@ -19,13 +21,16 @@ if ($conn->connect_error) {
 }
 
 //CHECK IF ANY ERRORS
-if (isset($_POST['registerUser'])) {
+if (isset($uname)&&isset($pword)&&isset($cPass) ) {
 	if (empty($uname)) { 
 	  echo "<script type='text/javascript'>
 		window.confirm('Username is Required');
 		window.location.href = 'Sign Up.php';
 		</script>
 	";
+
+	echo "uname";
+
 	}
 	else if (empty($pword)) { 
 	  echo "<script type='text/javascript'>
@@ -33,6 +38,9 @@ if (isset($_POST['registerUser'])) {
 		window.location.href = 'Sign Up.php';
 		</script>
 	";
+
+	echo "pword";
+
   }
 	else if (empty($cPass)) { 
 	  echo "<script type='text/javascript'>
@@ -40,6 +48,9 @@ if (isset($_POST['registerUser'])) {
 		window.location.href = 'Sign Up.php';
 		</script>
 	";
+
+	echo "cPass";
+
   }
 	else if ($pword != $cPass) {
 	 echo "<script type='text/javascript'>
@@ -47,6 +58,9 @@ if (isset($_POST['registerUser'])) {
 		window.location.href = 'Sign Up.php';
 		</script>
 	";
+
+	echo "pword != cPass";
+
 	}
 	else {
 	 echo "<script type='text/javascript'>
@@ -54,12 +68,17 @@ if (isset($_POST['registerUser'])) {
 		window.location.href = 'Home.php';
 		</script>
 	";
+
+	echo "great";
+
 	}
   
   $user_check_query = "SELECT * FROM login WHERE username='$uname' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
+  echo $result, $user;
+
   if ($user) { // if user exists
     if ($user['username'] === $username) {
       array_push($errors, "Username already exists");
@@ -70,8 +89,8 @@ if (isset($_POST['registerUser'])) {
   if (count($errors) == 0) {
   	$password = md5($pword);//encrypt the password before saving in the database
 
-  	//$query = "INSERT INTO users (username, email, password) 
-  			  //VALUES('$uname', ''$pword')";
+  	$query = "INSERT INTO login (username password) 
+  			  VALUES('$uname', ''$pword')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $uname;
   	$_SESSION['success'] = "You are now logged in";

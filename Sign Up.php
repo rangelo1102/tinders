@@ -25,7 +25,7 @@
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#newUsername {
+		#newUser {
 			position: absolute;
 			left: 300px;
 			top: 400px;
@@ -34,7 +34,7 @@
 			background-color: gray;
 			border: none;
 		}
-		#newUsername::placeholder{
+		#newUser::placeholder{
 			font-family: raleway;
 			font-weight: bold;
 			color: white;
@@ -80,7 +80,7 @@
 			font-weight: bold;
 			color: white;
 		}
-		#confPass {
+		#confirmPass {
 			position: absolute;
 			left: 300px;
 			top: 520px;
@@ -89,7 +89,7 @@
 			background-color: gray;
 			border: none;
 		}
-		#confPass::placeholder{
+		#confirmPass::placeholder{
 			font-family: raleway;
 			font-weight: bold;
 			color: white;
@@ -136,9 +136,9 @@
 <img src = "logo.png" id = "logo"> </img>
 	
 <form action = "signup.php" method="post">
-	<input type = "text" id ="newUsername" name = "newUser" placeholder = " USERNAME" required>
-	<input type = "text" id = "newPass" name = "newPass" placeholder = " PASSWORD" required>
-	<input type = "text" id = "confPass" name = "confirmPass" placeholder = " CONFIRM PASSWORD" required>
+	<input type = "text" id ="newUser" name = "newUser" placeholder = " USERNAME" required>
+	<input type = "password" id = "newPass" name = "newPass" placeholder = " PASSWORD" required>
+	<input type = "password" id = "confirmPass" name = "confirmPass" placeholder = " CONFIRM PASSWORD" required>
 <p><button type="submit" id = "signUpButton">sign up</button></p>
 </form>
 </body>

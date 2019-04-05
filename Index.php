@@ -6,6 +6,7 @@
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
+	
 	<style>
 		body {
 			background-color: dimgray;
