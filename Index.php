@@ -109,9 +109,9 @@
 </head>
 	
 <body>
-	<a href = "Login.html"><p id = "TindersTitle"> TINDERS </p></a>
+	<a href = "index.php"><p id = "TindersTitle"> TINDERS </p></a>
 	<p id = "Tinders"> TINDERS</p>
-	<a href = "Sign Up.html"><p id = "signUp"> SIGN UP</p></a>
+	<a href = "Sign Up.php"><p id = "signUp"> SIGN UP</p></a>
 	<img src = "logo.png" id = "logo"></img>
 	
 	<form method = "POST" action="login.php">
