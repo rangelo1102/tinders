@@ -1,4 +1,5 @@
 <?php
+session_start();
 //credentials and stuff
 $host = "localhost";
 $user = "root";
@@ -25,6 +26,7 @@ $row = mysqli_fetch_array($result);
 
 if($row["username"]== $username && $row["password"]== $password){
 	header('Location: Home.html');
+	$_SESSION['user_id'] = $user->ID;
 }else{
 	echo "<script type='text/javascript'>
 	window.confirm('Login Failed. Please Check Your Goddamn Password');
