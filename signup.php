@@ -1,11 +1,10 @@
 <?php
 //SIGN UP PAGE PHP CODE; NOT YET FINAL
-session_start();
 //credentials and stuff
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db ="tinders";
+$db ="login";
 
 // initialize
 $uname = filter_input(INPUT_POST, 'newUser');
@@ -21,8 +20,34 @@ if ($conn->connect_error) {
 }
 
 //CHECK IF ANY ERRORS
-if (isset($uname)&&isset($pword)&&isset($cPass) ) {
-	if (empty($uname)) { 
+if (isset($_POST['signUpButton'])) {
+	session_start();
+	$uname = mysql_real_escape_string($_POST['newUser']);
+	$pword = mysql_real_escape_string($_POST['newPass']);
+	$cPass = mysql_real_escape_string($_POST['confirmPass']);
+	
+	if ($pword == $cPass) {
+		//create user
+		$pword = md5($pword);
+		$sql = "INSERT INTO login(username, password) VALUES('$uname, $pword')";
+		mysqli_query($db, $sql);
+		$_SESSION['username'] = $username;
+		echo "<script type='text/javascript'>
+		window.confirm('u did it');
+		window.location.href = 'Home.php';
+		</script>
+	";
+	}
+	else {
+		echo "<script type='text/javascript'>
+		window.confirm('epic funny');
+		window.location.href = 'Sign Up.php';
+		</script>
+	";
+	}
+	
+	
+	/*if (empty($uname)) { 
 	  echo "<script type='text/javascript'>
 		window.confirm('Username is Required');
 		window.location.href = 'Sign Up.php';
@@ -99,5 +124,6 @@ if (isset($uname)&&isset($pword)&&isset($cPass) ) {
 		window.location.href = 'Home.php';
 		</script>";
   }
+  */
 }
 ?>

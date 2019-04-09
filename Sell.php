@@ -213,7 +213,46 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-family: raleway;
 			font-weight: bold;
 	}
-		
+		#QtyOldSide {
+			color: black;
+			position: absolute;
+			left: 1250px;
+			top: 480px;
+			font-family: raleway;
+			font-weight: bold;
+			font-size: 25.75px;
+		}
+		#QtyOldProdTextbox {
+			background-color: gray;
+			position: absolute;
+			left: 1200px;
+			top: 540px;
+			border-radius: 10%;
+			border: none;
+			font-family: raleway;
+			font-weight: bold;
+		}
+		#QtyProdSide {
+			height: 30px;
+			width: 200px;
+			color: black;
+			position: absolute;
+			left: 190px;
+			top: 480px;
+			font-family: raleway;
+			font-weight: bold;
+			font-size: 25.75px;
+		}
+		#QtyNewProdTextbox {
+			background-color: gray;
+			position: absolute;
+			left: 190px;
+			top: 540px;
+			border-radius: 10%;
+			border: none;
+			font-family: raleway;
+			font-weight: bold;
+		}	
 	</style>
 </head>
 
@@ -245,7 +284,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p id = "PriceProdSide"> price </p>
 	<p id = "Quantity"> quantity</p>
 	<input type = "text" id = "ProdQty" placeholder=" INPUT QUANTITY SOLD">
-	
 	<!--Update Button -->
 	<img id = "UpdateButton"> </img>
 	<p id = "Update"> update </p>

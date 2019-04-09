@@ -21,7 +21,7 @@ $query = "SELECT id, username, password FROM login";
 $result = $conn->query($query);
 // or die ("failed to query database ".mysql_error());
 
-//check if correct password
+//check if correct password 
 $row = mysqli_fetch_array($result);
 $hashedpassword = md5($password);
 if($row["username"]== $username && $row["password"]== $hashedpassword){

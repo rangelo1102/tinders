@@ -239,6 +239,46 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-family: raleway;
 			font-weight: bold;
 		}
+		#QtyOldSide {
+			color: black;
+			position: absolute;
+			left: 1250px;
+			top: 480px;
+			font-family: raleway;
+			font-weight: bold;
+			font-size: 25.75px;
+		}
+		#QtyOldProdTextbox {
+			background-color: gray;
+			position: absolute;
+			left: 1200px;
+			top: 540px;
+			border-radius: 10%;
+			border: none;
+			font-family: raleway;
+			font-weight: bold;
+		}
+		#QtyProdSide {
+			height: 30px;
+			width: 200px;
+			color: black;
+			position: absolute;
+			left: 190px;
+			top: 480px;
+			font-family: raleway;
+			font-weight: bold;
+			font-size: 25.75px;
+		}
+		#QtyNewProdTextbox {
+			background-color: gray;
+			position: absolute;
+			left: 190px;
+			top: 540px;
+			border-radius: 10%;
+			border: none;
+			font-family: raleway;
+			font-weight: bold;
+		}
 	</style>
 </head>
 
@@ -268,6 +308,8 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<input type = "text" id = "ProdPrice" name = "newprodprice" placeholder=" INPUT PRICE">
 	<img id = "DropDownProdPrice"></img>
 	<p id = "PriceProdSide"> price </p>
+<p id = "QtyProdSide"> quantity</p>
+	<input type = "number" id = "QtyNewProdTextbox" name = " " placeholder=" INSERT QUANTITY"
 
 	<!--Old Product -->
 	<p id = "OldProd"> old product</p>
@@ -287,6 +329,8 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	</select>
 	<p id = "PriceOldSide"> price</p>
 	<input type = "text" id = "DropDownOldProdPrice" placeholder=" INPUT PRICE"> </input>
+	<p id = "QtyOldSide"> quantity</p>
+	<input type = "number" id = "QtyOldProdTextbox" placeholder = " INPUT QUANTITY">
 
 	<!-- New Product-->
 	<img id = "UpdateButton"> </img>
