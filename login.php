@@ -10,7 +10,7 @@ $db = "tinders";
 $username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'password');
 
-//connecting to db
+//connecting to db 
 $conn = new mysqli($host,$user,$pass,$db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -29,7 +29,7 @@ if($row["username"]== $username && $row["password"]== $hashedpassword){
 	$_SESSION['user_id'] = $row["id"];
 }else{
 	echo "<script type='text/javascript'>
-	window.confirm('Login Failed. Please Check Your Goddamn Password');
+	window.confirm('Login Failed. Please Check Your Credentials');
 	window.location.href = 'index.php';
 	</script>
 	";
