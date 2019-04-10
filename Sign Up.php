@@ -139,7 +139,7 @@
 	<input type = "text" id ="newUser" name = "newUser" placeholder = " USERNAME" required>
 	<input type = "password" id = "newPass" name = "newPass" placeholder = " PASSWORD" required>
 	<input type = "password" id = "confirmPass" name = "confirmPass" placeholder = " CONFIRM PASSWORD" required>
-<p><button type="submit" id = "signUpButton">sign up</button></p>
+<p><button type="submit" id = "signUpButton" value = "signUp">sign up</button></p>
 </form>
 </body>
 </html>
