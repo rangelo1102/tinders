@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <?php
+//session
 session_start();
 if ( isset( $_SESSION['user_id'] ) ) {
 } else {
     header("Location: index.php");
 }
+
+
+
 ?>
 <html>
 <head>
