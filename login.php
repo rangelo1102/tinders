@@ -17,13 +17,14 @@ if ($conn->connect_error) {
 }
 
 //(Queeer)y
-$query = "SELECT id, username, password FROM login";
+$query = "SELECT id, username, password FROM login WHERE (username='".$username."' and password='".md5($password)."')";
 $result = $conn->query($query);
 // or die ("failed to query database ".mysql_error());
 
 //check if correct password 
 $row = mysqli_fetch_array($result);
 $hashedpassword = md5($password);
+print_r($row);
 if($row["username"]== $username && $row["password"]== $hashedpassword){
 	header('Location: Home.php');
 	$_SESSION['user_id'] = $row["id"];
