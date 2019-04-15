@@ -147,14 +147,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#Update {
-			font-size: 55.27px;
-			position: absolute;
-			top: 470px;
-			left:680px;
-			font-family: raleway;
-			font-weight: bold;
-		}
 		#UpdateButton {
 			height: 75px;
 			width: 250px;
@@ -163,7 +155,9 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			left: 650px;
 			background-color: dimgray;
 			border-radius: 20%;
-			
+			font-size: 55.27px;
+			font-family: raleway;
+			font-weight: bold;
 		}
 		#DropDownProdName {
 			height: 30px;
@@ -270,22 +264,29 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 	<!--New Product-->
 	<p id = "Product"> new product</p>
-	<input type = "text" id = "DropDownProdName" name = "prodname" placeholder=" INPUT NAME">
 	<p id = "NameProdSide"> name </p>
 	<p id = "CategProdSide"> category </p>
-	<select required id = "DropDownProdCateg">
-		<option value="" hidden>CHOOSE A CATEGORY</option>
-		<option value="1">Category 1</option>
-		<option value="2">Category 2</option>
-		<option value="3">Category 3</option>
-	</select>
-	<input type = "text" id = "ProdPrice" name = "newprodprice" placeholder=" INPUT PRICE">
-	<img id = "DropDownProdPrice"></img>
 	<p id = "PriceProdSide"> price </p>
 	<p id = "Quantity"> quantity</p>
-	<input type = "text" id = "ProdQty" placeholder=" INPUT QUANTITY SOLD">
-	<!--Update Button -->
-	<img id = "UpdateButton"> </img>
-	<p id = "Update"> update </p>
+	<img id = "DropDownProdPrice"></img>
+	<!--FORMS-->
+	<form action = "sell_backend.php" method = "post">
+	<input type = "text" id = "ProdPrice" name = "newprodprice" placeholder=" INPUT PRICE">
+	<input type = "number" id = "ProdQty" placeholder=" INPUT QUANTITY SOLD" name = "qty">
+		<!--Category Name Drop Down-->
+	<select id = "DropDownProdCateg" name = "category">
+		<option value="">CHOOSE A CATEGORY</option>
+		<option value="Drinks">Drinks</option>
+		<option value="Snacks">Snacks</option>
+		<option value="Lunch">Lunch</option>
+	</select>
+		<!--Product Name Drop Down-->
+	<select required id = "DropDownProdName" name = "product">
+		<option value="" hidden>PLEASE SELECT A CATEGORY FIRST</option>
+		<option value = "1"> Fries</option>
+	</select>
+	<button type = "submit" id = "UpdateButton" value = "sellThat">update</button>
+	</form>
+	
 </body>
 </html>
