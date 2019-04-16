@@ -1,3 +1,20 @@
+<?php
+	$host = "localhost";
+	$user = "root";
+	$pass = "";
+	$db = "tinders";
+
+	//connecting to db 
+	$conn = new mysqli($host,$user,$pass,$db);
+	if ($conn->connect_error) {
+    			die("Connection failed: " . $conn->connect_error);
+			}
+
+	$table = "products_snacks";
+	$collumn = "name_product";
+	$getProdNamesQuery = "SELECT * FROM products_snacks";
+	$getProdNames = $conn->query($getProdNamesQuery);
+		?>
 <!DOCTYPE html>
 <?php
 session_start();
@@ -9,7 +26,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
-<title>Tinders: Sell</title>
+<title>Tinders: Sell Snacks</title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
@@ -22,7 +39,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			left: 175px;
 			top: 150px;
 		}
-		a:visited {
+		a{
 			color: black;
 		}
 		
@@ -86,16 +103,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-size: 25.75px;
 			position: absolute;
 			top: 350px;
-			left: 850px;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#OldProd {
-			position: absolute;
-			font-size: 36px;
-			top: 120px;
-			left: 1160px;
-			color: white;
+			left: 280px;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -104,14 +112,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-size: 25.75px;
 			left: 280px;
 			top: 225px;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#NameOldSide {
-			position: absolute;
-			font-size: 25.75px;
-			top: 225px;
-			left: 1285px;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -128,22 +128,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			position: absolute;
 			left: 850px;
 			top: 225px;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#CategOldSide {
-			position: absolute;
-			font-size: 25.75px;
-			top: 305px;
-			left: 1245px;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#PriceOldSide {
-			font-size: 25.75px;
-			position: absolute;
-			top: 385px;
-			left: 1290px;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -200,32 +184,14 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			width: 200px;
 			background-color: gray;
 			position: absolute;
-			left: 850px;
+			left: 280px;
 			top: 410px;
 			border-radius: 10%;
 			border: none;
 			font-family: raleway;
 			font-weight: bold;
 	}
-		#QtyOldSide {
-			color: black;
-			position: absolute;
-			left: 1250px;
-			top: 480px;
-			font-family: raleway;
-			font-weight: bold;
-			font-size: 25.75px;
-		}
-		#QtyOldProdTextbox {
-			background-color: gray;
-			position: absolute;
-			left: 1200px;
-			top: 540px;
-			border-radius: 10%;
-			border: none;
-			font-family: raleway;
-			font-weight: bold;
-		}
+		
 		#QtyProdSide {
 			height: 30px;
 			width: 200px;
@@ -254,36 +220,32 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p> </p>
 	<!--Ribbon-->
 	<a href = "Home.php"><p id = "TindersTitle">TINDERS</p></a>
-	<p id = "Change">SELL</p>
+	<p id = "Change">SELL SNACKS</p>
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
-	<a href = "Restock.php"><p id = "RRestock"> RESTOCK </p></a>
+	<a href = "Restock_Categories.php"><p id = "RRestock"> RESTOCK </p></a>
 	<a href = "Update Stock.php"><p id = "RChange"> CHANGE </p></a>
-	<a href = "Sell.php"><p id = "RSell"> SELL </p></a>
+	<a href = "Sell_Categories.php"><p id = "RSell"> SELL </p></a>
 	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
 
 	<!--New Product-->
-	<p id = "Product"> new product</p>
+	<p id = "Product"> new sale</p>
 	<p id = "NameProdSide"> name </p>
-	<p id = "CategProdSide"> category </p>
-	<p id = "PriceProdSide"> price </p>
 	<p id = "Quantity"> quantity</p>
-	<img id = "DropDownProdPrice"></img>
 	<!--FORMS-->
-	<form action = "sell_backend.php" method = "post">
-	<input type = "text" id = "ProdPrice" name = "newprodprice" placeholder=" INPUT PRICE">
-	<input type = "number" id = "ProdQty" placeholder=" INPUT QUANTITY SOLD" name = "qty">
-		<!--Category Name Drop Down-->
-	<select id = "DropDownProdCateg" name = "category">
-		<option value="">CHOOSE A CATEGORY</option>
-		<option value="Drinks">Drinks</option>
-		<option value="Snacks">Snacks</option>
-		<option value="Lunch">Lunch</option>
-	</select>
+	<form action = "sellsnacks_backend.php" method = "post">
+	<input type = "number" id = "ProdQty" placeholder=" INPUT QUANTITY SOLD" name = "qty" required>
 		<!--Product Name Drop Down-->
 	<select required id = "DropDownProdName" name = "product">
-		<option value="" hidden>PLEASE SELECT A CATEGORY FIRST</option>
-		<option value = "1"> Fries</option>
+		<option value="" hidden>PLEASE SELECT AN ITEM</option>
+		<?php 
+			if ($getProdNames) {
+				while ($row=mysqli_fetch_array($getProdNames)) {
+					$prodName=$row["$collumn"];
+					echo "<option value = ".$prodName.">$prodName<br></option>";
+				}
+			}
+			?>
 	</select>
 	<button type = "submit" id = "UpdateButton" value = "sellThat">update</button>
 	</form>

@@ -175,14 +175,14 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 <body>
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
-	<a href = "Restock.php" id = "RRestock"> RESTOCK </a>
+	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Update Stock.php" id = "RChange"> CHANGE </a>
-	<a href = "Sell.php" id = "RSell"> SELL </a>
+	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<h1 id = "Head"> Morning, I suppose </h1>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
-	<a href = "Restock.php"><div id = "CircleRestock"></div></a>
+	<a href = "Restock_Categories.php"><div id = "CircleRestock"></div></a>
 	<a href = "Update Stock.php"><div id = "CirlceChange"></div></a>
-	<a href = "Sell.php"><div id = "CirlceSell"></div> </a>
+	<a href = "Sell_Categories.php"><div id = "CirlceSell"></div> </a>
 	<p id = "RestockLabel">RESTOCK</p>
 	<p id = "ChangeLabel"> CHANGE</p>
 	<p id = "SellLabel">SELL</p>

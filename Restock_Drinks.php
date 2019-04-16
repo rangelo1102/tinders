@@ -13,7 +13,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
-<title>Tinders: Restock</title>
+<title>Tinders: Restock Drinks</title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
@@ -300,12 +300,12 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p> </p>
 	<!--Banner -->
 	<a href = "Home.php"><p id = "TindersTitle">TINDERS</p></a>
-	<p id = "Change">RESTOCK</p>
+	<p id = "Change">RESTOCK DRINKS</p>
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
-	<a href = "Restock.php"><p id = "RRestock"> RESTOCK </p></a>
+	<a href = "Restock_Categories.php"><p id = "RRestock"> RESTOCK </p></a>
 	<a href = "Update Stock.php"><p id = "RChange"> CHANGE </p></a>
-	<a href = "Sell.php"><p id = "RSell"> SELL </p></a>
+	<a href = "Sell_Categories.php"><p id = "RSell"> SELL </p></a>
 	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
 
 	<!-- Product & Old Titles -->
