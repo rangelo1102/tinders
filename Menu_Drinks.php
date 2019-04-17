@@ -14,6 +14,8 @@
 	$nameCollumn = "name_product";
 	$stockCollumn = "amount_product";
 	$priceCollumn = "price_product";
+	$soldCollumn = "sold_product";
+	$revenueCollumn = "revenue";
 	//get all values from table
 	$getProdsQuery = "SELECT * FROM products_drinks";
 	$getProds = $conn->query($getProdsQuery);
@@ -23,7 +25,7 @@
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
-<title>Tinders: Drinks Menu </title>
+<title>Tinders: Drinks Report </title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
@@ -78,8 +80,8 @@
 			position: absolute;
 			font-family: raleway;
 			top: 200px;
-			left: 350px;
-			
+			left: 250px;
+			border-collapse: collapse;
 	}
 	#DrinksMenuLabel {
 			position: absolute;
@@ -90,20 +92,28 @@
 			font-weight: bold;
 		}
 	th, td {
-		width: 300px;
+		width: 200px;
 		text-align: left;
 	}
 	th {
 		border-collapse: collapse;
-		border-bottom-style: solid;
+		border-style: solid;
 		border-color: black;
 		border-width: 1px;
 		border-top-style: solid;
 	}
 	td {
-		border-bottom-style: solid;
+		border-style: solid;
 		border-color: black;
 		border-width: 1px;
+	}
+	#TotalRev {
+		font-family: raleway;
+		font-size: 30px;
+		font-weight: bold;
+		position: absolute;
+		left: 1000px;
+		top: 70px;
 	}
 
 </style>
@@ -112,15 +122,17 @@
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
 	<a href = "Restock_Categories.php"><p id = "RRestock"> RESTOCK </p></a>
-	<a href = "Menu_Categories.php"><p id = "RChange"> MENU </p></a>
+	<a href = "Menu_Categories.php"><p id = "RChange"> REPORT </p></a>
 	<a href = "Sell_Categories.php"><p id = "RSell"> SELL </p></a>
 	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
-	<p id = "DrinksMenuLabel"> Drinks Menu</p>
+	<p id = "DrinksMenuLabel"> Drinks Report</p>
 	<table id = "DrinksTable">
 		<tr>
 			<th>Name </th>
 			<th>Quantity Available</th>
 			<th>Price</th>
+			<th>Amount Sold </th>
+			<th>Revenue</th>
 		</tr>
 		
 			<?php 
@@ -129,15 +141,27 @@
 					$prodName=$row["$nameCollumn"];
 					$prodStock = $row["$stockCollumn"];
 					$prodPrice = $row["$priceCollumn"];
+					$prodSold = $row["$soldCollumn"];
+					$prodRev = $row["$revenueCollumn"];
 					echo "<tr>
 					<td>$prodName</td>
 					<td>$prodStock</td>
-					<td>$prodPrice</td>
+					<td>Php $prodPrice</td>
+					<td>$prodSold</td>
+					<td>Php $prodRev</td>
 					</tr>";
 				}
 			}
 		?>
 	</table>
+	<?php
+	//get total revenue
+	$totalRevQuery = "SELECT SUM(revenue) AS value_rev FROM products_drinks";
+	$totalRevQueryResult = mysqli_query($conn, $totalRevQuery);
+	$revValues = mysqli_fetch_assoc($totalRevQueryResult);
+	$legitRev = $revValues['value_rev'];
+	echo "<p id = 'TotalRev'> Total Revenue: Php $legitRev </p>";	
+	?>
 	
 </body>
 </html>

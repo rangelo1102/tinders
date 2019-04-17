@@ -34,7 +34,11 @@ if ($quantity > $zero and $quantity <= $availableStock) {
 		WHERE name_product = '$product';
 		";
 	$updateTable = $conn->query($updateStock);	
-	header("Location: Sell_Categories.php");
+	echo "<script type='text/javascript'>
+		window.confirm('Sale successful.');
+		window.location.href = 'Sell_Categories.php';
+		</script>
+	";
 	}
 elseif ($quantity < $zero){
 	echo "<script type='text/javascript'>

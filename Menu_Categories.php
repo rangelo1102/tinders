@@ -1,8 +1,22 @@
+<?php
+	$host = "localhost";
+	$user = "root";
+	$pass = "";
+	$db = "tinders";
+
+	//connecting to db 
+	$conn = new mysqli($host,$user,$pass,$db);
+	if ($conn->connect_error) {
+    			die("Connection failed: " . $conn->connect_error);
+			}
+		?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
-<title>Tinders: Menu </title>
+<title>Tinders: Report </title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
@@ -78,15 +92,6 @@
 			font-weight: bold;
 			color: #383737;
 	}
-	#SelectACategory {
-			font-size: 20px;
-			position: absolute;
-			top: 150px;
-			left: 640px;
-			font-family: raleway;
-			font-weight: bold;
-			color: black;
-	}
 	#SnacksCircle {
 			background-color: dimgray;
 			height: 150px;
@@ -122,23 +127,59 @@
 			font-family: raleway;
 			font-weight: bold;
 	}
+	#OverallTinders {
+			font-family: raleway;
+			font-weight: bold;
+			position: absolute;
+			top: 125px;
+			left: 470px;
+			font-size: 50px;
+	}
 </style>
 <body>
 <a href = "Home.php"><p id = "TindersTitle">TINDERS</p></a>
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
 	<a href = "Restock_Categories.php"><p id = "RRestock"> RESTOCK </p></a>
-	<a href = "Menu_Categories.php"><p id = "RChange"> MENU </p></a>
+	<a href = "Menu_Categories.php"><p id = "RChange"> REPORT </p></a>
 	<a href = "Sell_Categories.php"><p id = "RSell"> SELL </p></a>
 	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
-	<p id = "MenuCategoriesLabel">Menu</p>
+	<p id = "MenuCategoriesLabel">Report</p>
 	<p id = SnacksLabel> Snacks </p>
 	<p id = "DrinksLabel">Drinks </p>
 	<p id = "LunchLabel"> Lunch </p>
-	<p id = "SelectACategory"> Please select a category. </p>
 	<a href = "Menu_Snacks.php"><img id = "SnacksCircle"></a>
 	<a href = "Menu_Drinks.php"><img id = "DrinksCircle"></a>
 	<a href = "Menu_Lunch.php"><img id = "LunchCircle"></a>
+
+	<?php
+	//get total revenue OF EVERYTHING
+	//drinks
+	$totalDrinksRevQuery = "SELECT SUM(revenue) AS value_rev FROM products_drinks";
+	$totalDrinksRevQueryResult = mysqli_query($conn, $totalDrinksRevQuery);
+	$revValuesDrinks = mysqli_fetch_assoc($totalDrinksRevQueryResult);
+	$overallDrinksRevenue = $revValuesDrinks['value_rev'];
+
+	//snacks
+	$totalSnacksRevQuery = "SELECT SUM(revenue) AS value_rev FROM products_snacks";
+	$totalSnacksRevQueryResult = mysqli_query($conn, $totalSnacksRevQuery);
+	$revValuesSnacks = mysqli_fetch_assoc($totalSnacksRevQueryResult);
+	$overallSnacksRevenue = $revValuesSnacks['value_rev'];
+
+	//lunch
+	$totalLunchRevQuery = "SELECT SUM(revenue) AS value_rev FROM products_lunch";
+	$totalLunchRevQueryResult = mysqli_query($conn, $totalLunchRevQuery);
+	$revValuesLunch = mysqli_fetch_assoc($totalLunchRevQueryResult);
+	$overallLunchRevenue = $revValuesLunch['value_rev'];
+
+	//OVERALL
+	$overallTindersRevenue = 0;
+
+	$overallTindersRevenue = $overallDrinksRevenue + $overallSnacksRevenue + $overallLunchRevenue;
+
+	echo "<p id = 'OverallTinders'> Overall Revenue: Php $overallTindersRevenue </p>"
+	
+	?>
 	
 </body>
 </html>

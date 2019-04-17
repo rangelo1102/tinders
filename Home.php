@@ -114,7 +114,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-size: 52px;
 			position: absolute;
 			top: 410px;
-			left: 690px;
+			left: 670px;
 			font-family: raleway;
 			font-weight: bold;
 			color: #383737;
@@ -132,19 +132,19 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			text-align: center;
 			position: absolute;
 			top: 520px;
-			left: 225px;
+			left: 250px;
 		}
 	#MenuDesc {
 			text-align: center;
 			position: absolute;
 			top: 520px;
-			left: 625px;
+			left: 660px;
 		}
 	#SellDesc {
 			text-align: center;
 			position: absolute;
 			top: 520px;
-			left: 1080px;
+			left: 1070px;
 		}
 	#ReportCirc {
 			background-color: dimgray;
@@ -176,7 +176,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <body>
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
-	<a href = "Menu_Categories.php" id = "RMenu"> MENU </a>
+	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<h1 id = "Head"> Morning, I suppose </h1>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
@@ -184,13 +184,10 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<a href = "Menu_Categories.php"><div id = "CirlceMenu"></div></a>
 	<a href = "Sell_Categories.php"><div id = "CirlceSell"></div> </a>
 	<p id = "RestockLabel">RESTOCK</p>
-	<p id = "MenuLabel"> MENU </p>
+	<p id = "MenuLabel"> REPORT </p>
 	<p id = "SellLabel">SELL</p>
-	<p id = "RestockDesc">New day, new stock. <br>Click here to update your stock for the day. <br></p>
-	<p id = "MenuDesc"> What's available? <br>Click here to check your stock and pricing.</p>
+	<p id = "RestockDesc">New day, new stock. <br>Update your current pricing and stock. <br></p>
+	<p id = "MenuDesc"> What's available? <br>Stock, pricing, and total revenue.</p>
 	<p id = "SellDesc">Sales are always welcome. <br> Click here to record a new purchase. </p>
-	<div id = "ReportCirc"></div>
-	<p id = "ReportLabel">REPORT</p>
-	<p id = "ReportDesc"> How well did we do today? </p>
 </body>
 </html>
