@@ -117,7 +117,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			position: absolute;
 			font-size: 25.75px;
 			top: 225px;
-			left: 1285px;
+			left: 1050px;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -313,7 +313,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p id = "OldProd"> old product</p>
 
 	<!--New Product-->
-	<p id = "NameProdSide"> name </p>
+	<p id = "NameProdSide"> name (do not use spaces)</p>
 	<p id = "CategProdSide"> category </p>
 		<select required id = "DropDownProdCateg">
 		<option value=""hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A CATEGORY</option>
@@ -322,12 +322,12 @@ if ( isset( $_SESSION['user_id'] ) ) {
     	<option value = "3">Category 3</option>
 		</select>
 	<input type = "text" id = "DropDownProdName" name = "prodname" placeholder = " INPUT NAME">
-	<input type = "text" id = "ProdPrice" name = "newprodprice"  placeholder=" INPUT PRICE">
+	<input type = "number" id = "ProdPrice" name = "newprodprice"  placeholder=" INPUT PRICE">
 	<p id = "PriceProdSide"> price </p>
 	<p id = "QtyProdSide"> quantity</p>
 	<input type = "number" id = "QtyNewProdTextbox" name = " " placeholder=" INSERT QUANTITY"
 	<!--Old Product-->
-	<p id = "NameOldSide"> name</p>
+	<p id = "NameOldSide"> name (do not use spaces)</p>
 	<select required id = "DropDownProdNameCateg">
 		<option value="" hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A PRODUCT</option>
 		<option value "1">Product 1 </option>
@@ -343,7 +343,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		<option value "3">Category 3 </option>
 	</select>
 	<p id = "PriceOldSide"> price</p>
-	<input type = "text" id = "DropDownOldProdPrice" placeholder=" INPUT PRICE"> </img>
+	<input type = "number" id = "DropDownOldProdPrice" placeholder=" INPUT PRICE"> </img>
 
 	<p id = "QtyOldSide"> quantity</p>
 	<input type = "number" id = "QtyOldProdTextbox" placeholder = " INPUT QUANTITY">
