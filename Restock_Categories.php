@@ -114,15 +114,24 @@
 			top: 300px;
 			left: 1010px;
 	}
+	#RestockCategoriesLabel {
+			position: absolute;
+			font-size: 44.43px;
+			left: 100px;
+			top: 20px;
+			font-family: raleway;
+			font-weight: bold;
+	}
 </style>
 <body>
 <a href = "Home.php"><p id = "TindersTitle">TINDERS</p></a>
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
 	<a href = "Restock_Categories.php"><p id = "RRestock"> RESTOCK </p></a>
-	<a href = "Update Stock.php"><p id = "RChange"> CHANGE </p></a>
+	<a href = "Menu_Categories.php"><p id = "RChange"> MENU </p></a>
 	<a href = "Sell_Categories.php"><p id = "RSell"> SELL </p></a>
 	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
+	<p id = "RestockCategoriesLabel">Restock</p>
 	<p id = SnacksLabel> Snacks </p>
 	<p id = "DrinksLabel">Drinks </p>
 	<p id = "LunchLabel"> Lunch </p>

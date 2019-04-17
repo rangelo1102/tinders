@@ -38,11 +38,11 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		a:link {
 			color: black;
 		}
-	#RChange {
+	#RMenu {
 			font-size: 20px;
 			position: absolute;
 			top: 25px;
-			left: 740px;
+			left: 760px;
 			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
@@ -83,7 +83,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-weight: bold;
 		}
 	
-	#CirlceChange {
+	#CirlceMenu {
 			height: 200px;
 			width: 200px;
 			background-color: dimgray;
@@ -110,11 +110,11 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-weight: bold;
 			color: #383737;
 		}
-	#ChangeLabel {
+	#MenuLabel {
 			font-size: 52px;
 			position: absolute;
 			top: 410px;
-			left: 662px;
+			left: 690px;
 			font-family: raleway;
 			font-weight: bold;
 			color: #383737;
@@ -134,11 +134,11 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			top: 520px;
 			left: 225px;
 		}
-	#ChangeDesc {
+	#MenuDesc {
 			text-align: center;
 			position: absolute;
 			top: 520px;
-			left: 665px;
+			left: 625px;
 		}
 	#SellDesc {
 			text-align: center;
@@ -176,18 +176,18 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <body>
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
-	<a href = "Update Stock.php" id = "RChange"> CHANGE </a>
+	<a href = "Menu_Categories.php" id = "RMenu"> MENU </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<h1 id = "Head"> Morning, I suppose </h1>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
 	<a href = "Restock_Categories.php"><div id = "CircleRestock"></div></a>
-	<a href = "Update Stock.php"><div id = "CirlceChange"></div></a>
+	<a href = "Menu_Categories.php"><div id = "CirlceMenu"></div></a>
 	<a href = "Sell_Categories.php"><div id = "CirlceSell"></div> </a>
 	<p id = "RestockLabel">RESTOCK</p>
-	<p id = "ChangeLabel"> CHANGE</p>
+	<p id = "MenuLabel"> MENU </p>
 	<p id = "SellLabel">SELL</p>
 	<p id = "RestockDesc">New day, new stock. <br>Click here to update your stock for the day. <br></p>
-	<p id = "ChangeDesc"> New, sudden changes? <br>Click here to update your stock.</p>
+	<p id = "MenuDesc"> What's available? <br>Click here to check your stock and pricing.</p>
 	<p id = "SellDesc">Sales are always welcome. <br> Click here to record a new purchase. </p>
 	<div id = "ReportCirc"></div>
 	<p id = "ReportLabel">REPORT</p>

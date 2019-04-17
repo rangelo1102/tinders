@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
-<title>Tinders: Sell </title>
+<title>Tinders: Menu </title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
@@ -114,7 +114,7 @@
 			top: 300px;
 			left: 1010px;
 	}
-	#SellCategoriesLabel {
+	#MenuCategoriesLabel {
 			position: absolute;
 			font-size: 44.43px;
 			left: 100px;
@@ -131,14 +131,14 @@
 	<a href = "Menu_Categories.php"><p id = "RChange"> MENU </p></a>
 	<a href = "Sell_Categories.php"><p id = "RSell"> SELL </p></a>
 	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
-	<p id = "SellCategoriesLabel">Sell</p>
+	<p id = "MenuCategoriesLabel">Menu</p>
 	<p id = SnacksLabel> Snacks </p>
 	<p id = "DrinksLabel">Drinks </p>
 	<p id = "LunchLabel"> Lunch </p>
 	<p id = "SelectACategory"> Please select a category. </p>
-	<a href = "Sell_Snacks.php"><img id = "SnacksCircle"></a>
-	<a href = "Sell_Drinks.php"><img id = "DrinksCircle"></a>
-	<a href = "Sell_Lunch.php"><img id = "LunchCircle"></a>
+	<a href = "Menu_Snacks.php"><img id = "SnacksCircle"></a>
+	<a href = "Menu_Drinks.php"><img id = "DrinksCircle"></a>
+	<a href = "Menu_Lunch.php"><img id = "LunchCircle"></a>
 	
 </body>
 </html>

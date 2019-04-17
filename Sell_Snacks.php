@@ -220,11 +220,11 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p> </p>
 	<!--Ribbon-->
 	<a href = "Home.php"><p id = "TindersTitle">TINDERS</p></a>
-	<p id = "Change">SELL SNACKS</p>
+	<p id = "Change">Sell Snacks</p>
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
 	<a href = "Restock_Categories.php"><p id = "RRestock"> RESTOCK </p></a>
-	<a href = "Update Stock.php"><p id = "RChange"> CHANGE </p></a>
+	<a href = "Menu_Categories.php"><p id = "RChange"> MENU </p></a>
 	<a href = "Sell_Categories.php"><p id = "RSell"> SELL </p></a>
 	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
 
