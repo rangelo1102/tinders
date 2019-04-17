@@ -10,11 +10,12 @@
     			die("Connection failed: " . $conn->connect_error);
 			}
 
-	$table = "products_drinks";
+	$table = "products_lunch";
 	$collumn = "name_product";
-	$getProdNamesQuery = "SELECT * FROM products_drinks";
+	$getProdNamesQuery = "SELECT * FROM products_lunch";
 	$getProdNames = $conn->query($getProdNamesQuery);
 		?>
+
 
 <!DOCTYPE html>
 <?php
@@ -27,13 +28,13 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
-<title>Tinders: Sell Drinks</title>
+<title>Tinders: Change Lunch</title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
 <style>
 		#New {
-			height: 475px;
+			height: 275px;
 			width: 1200px;
 			background-color: #C4C1C1;
 			position: absolute;
@@ -44,7 +45,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			color: black;
 		}
 		
-		#TindersTitle {
+	#TindersTitle {
 			position: absolute;
 			font-size: 20px;
 			font-family: raleway;
@@ -241,23 +242,21 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <body>
 	<p> </p>
 	<!--Ribbon-->
-	<p id = "Change">Sell Drinks</p>
-	<img id = "New"> </img>
-	<img id = "Old"> </img>
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
+	<p id = "Change">Change Lunch</p>
+	<img id = "New"> </img>
+	
 
 	<!--New Product-->
-	<p id = "Product"> new sale</p>
+	<p id = "Product"> remove</p>
 	<p id = "NameProdSide"> name </p>
-	<p id = "Quantity"> quantity</p>
 	<!--FORMS-->
-	<form action = "selldrinks_backend.php" method = "post">
-	<input type = "number" id = "ProdQty" placeholder=" INPUT QUANTITY SOLD" name = "qty" required>
+	<form action = "changelunch_backend.php" method = "post">
 		<!--Product Name Drop Down-->
 	<select required id = "DropDownProdName" name = "product">
 		<option value="" hidden>PLEASE SELECT AN ITEM</option>

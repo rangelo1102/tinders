@@ -23,11 +23,12 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			top: 20px;
 			text-decoration: none;
 		}
+	
 	#RRestock {
 			font-size: 20px;
 			position: absolute;
 			top: 25px;
-			left: 550px;
+			left: 420px;
 			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
@@ -42,7 +43,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-size: 20px;
 			position: absolute;
 			top: 25px;
-			left: 760px;
+			left: 640px;
 			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
@@ -51,7 +52,16 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-size: 20px;
 			position: absolute;
 			top: 25px;
-			left: 950px;
+			left: 850px;
+			text-decoration: none;
+			font-family: raleway;
+			font-weight: bold;
+		}
+	#RChange {
+			font-size: 20px;
+			position: absolute;
+			top: 25px;
+			left: 1050px;
 			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
@@ -146,7 +156,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			top: 520px;
 			left: 1070px;
 		}
-	#ReportCirc {
+	#ChangeCirc {
 			background-color: dimgray;
 			height: 75px;
 			width: 75px;
@@ -155,7 +165,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			top: 650px;
 			left: 590px;
 		}
-	#ReportLabel {
+	#ChangeLabel {
 			font-size: 52px;
 			position: absolute;
 			top: 595px;
@@ -164,7 +174,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-weight: bold;
 			color: #383737;
 		}
-	#ReportDesc {
+	#ChangeDesc {
 			text-align: left;
 			position: absolute;
 			left: 683px;
@@ -178,8 +188,9 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
-	<h1 id = "Head"> Morning, I suppose </h1>
+	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
+	<h1 id = "Head"> Morning, I suppose </h1>
 	<a href = "Restock_Categories.php"><div id = "CircleRestock"></div></a>
 	<a href = "Menu_Categories.php"><div id = "CirlceMenu"></div></a>
 	<a href = "Sell_Categories.php"><div id = "CirlceSell"></div> </a>
@@ -189,5 +200,8 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p id = "RestockDesc">New day, new stock. <br>Update your current pricing and stock. <br></p>
 	<p id = "MenuDesc"> What's available? <br>Stock, pricing, and total revenue.</p>
 	<p id = "SellDesc">Sales are always welcome. <br> Click here to record a new purchase. </p>
+	<a href = "ChangeStock_Categories.php"><img id = "ChangeCirc"></a>
+	<p id = "ChangeLabel"> CHANGE </p>
+	<p id = "ChangeDesc"> Drop items from the inventory. </p>
 </body>
 </html>

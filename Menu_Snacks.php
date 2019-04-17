@@ -17,6 +17,7 @@
 	$priceCollumn = "price_product";
 	$soldCollumn = "sold_product";
 	$revenueCollumn = "revenue";
+	$productionCollumn = "production_cost";
 	//get all values from table
 	$getProdsQuery = "SELECT * FROM products_snacks";
 	$getProds = $conn->query($getProdsQuery);
@@ -37,41 +38,61 @@
 	#TindersTitle {
 			position: absolute;
 			font-size: 20px;
-			left: 30px;
-			top: 5px;
 			font-family: raleway;
 			font-weight: bold;
+			left: 20px;
+			top: 20px;
+			text-decoration: none;
 		}
-
+	
 	#RRestock {
 			font-size: 20px;
 			position: absolute;
-			top: 5px;
-			left: 550px;
+			top: 25px;
+			left: 420px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
-	#RChange {
+		a:visited {
+			color: black;
+		}
+		a:link {
+			color: black;
+		}
+	#RMenu {
 			font-size: 20px;
 			position: absolute;
-			top: 5px;
-			left: 740px;
+			top: 25px;
+			left: 640px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
 	#RSell {
 			font-size: 20px;
 			position: absolute;
-			top: 5px;
-			left: 950px;
+			top: 25px;
+			left: 850px;
+			text-decoration: none;
+			font-family: raleway;
+			font-weight: bold;
+		}
+	#RChange {
+			font-size: 20px;
+			position: absolute;
+			top: 25px;
+			left: 1050px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
 	#RLogout {
 			font-size: 20px;
 			position: absolute;
-			left: 1400px;
-			top: 5px;
+			left: 1390px;
+			top: 29px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -81,7 +102,7 @@
 			position: absolute;
 			font-family: raleway;
 			top: 200px;
-			left: 250px;
+			left: 210px;
 			border-collapse: collapse;
 	}
 	#SnacksMenuLabel {
@@ -93,7 +114,7 @@
 			font-weight: bold;
 		}
 	th, td {
-		width: 200px;
+		width: 150px;
 		text-align: left;
 	}
 	th {
@@ -107,6 +128,14 @@
 		border-color: black;
 		border-width: 1px;
 	}
+	#TotalProf {
+		font-family: raleway;
+		font-size: 30px;
+		font-weight: bold;
+		position: absolute;
+		left: 1000px;
+		top: 100px;
+	}
 	#TotalRev {
 		font-family: raleway;
 		font-size: 30px;
@@ -117,21 +146,24 @@
 	}
 </style>
 <body>
-<a href = "Home.php"><p id = "TindersTitle">TINDERS</p></a>
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
-	<a href = "Restock_Categories.php"><p id = "RRestock"> RESTOCK </p></a>
-	<a href = "Menu_Categories.php"><p id = "RChange"> REPORT </p></a>
-	<a href = "Sell_Categories.php"><p id = "RSell"> SELL </p></a>
-	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
+	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
+	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
+	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
+	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
+	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
+	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
 	<p id = "SnacksMenuLabel"> Snacks Report</p>
 	<table id = "SnacksTable">
 		<tr>
 			<th>Name </th>
 			<th>Quantity Available</th>
 			<th>Price</th>
+			<th>Production Cost</th>
 			<th>Amount Sold</th>
 			<th>Revenue</th>
+			<th>Profit</th>
 		</tr>
 		
 			<?php 
@@ -140,14 +172,18 @@
 					$prodName=$row["$nameCollumn"];
 					$prodStock = $row["$stockCollumn"];
 					$prodPrice = $row["$priceCollumn"];
+					$prodCost = $row["$productionCollumn"];
 					$prodSold = $row["$soldCollumn"];
 					$prodRev = $row["$revenueCollumn"];
+					$prodProf = $prodRev - (($prodStock + $prodSold) * $prodCost);
 					echo "<tr>
 					<td>$prodName</td>
 					<td>$prodStock</td>
 					<td>Php $prodPrice</td>
+					<td>Php $prodCost</td>
 					<td>$prodSold</td>
 					<td>Php $prodRev</td>
+					<td>Php $prodProf</td>
 					</tr>";
 				}
 			}
@@ -159,7 +195,15 @@
 	$totalRevQueryResult = mysqli_query($conn, $totalRevQuery);
 	$revValues = mysqli_fetch_assoc($totalRevQueryResult);
 	$legitRev = $revValues['value_rev'];
-	echo "<p id = 'TotalRev'> Total Revenue: Php $legitRev </p>";	
+
+	$totalProdCostQuery = "SELECT SUM((sold_product + amount_product) * production_cost) AS prod_cost FROM products_snacks";
+	$totalProdCostQueryResult = mysqli_query($conn, $totalProdCostQuery);
+	$costValues = mysqli_fetch_assoc($totalProdCostQueryResult);
+	$legitCost = $costValues['prod_cost'];
+
+	$snacksProfit = $legitRev - $legitCost;
+	echo "<p id = 'TotalRev'> Total Revenue: Php $legitRev</p>
+		  <p id = 'TotalProf'> Total Profit: Php $snacksProfit </p>";	
 	?>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
-<title>Tinders: Restock </title>
+<title>Tinders: Change Stock </title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
@@ -19,7 +19,7 @@
 			top: 20px;
 			text-decoration: none;
 		}
-	
+
 	#RRestock {
 			font-size: 20px;
 			position: absolute;
@@ -134,7 +134,7 @@
 			top: 300px;
 			left: 1010px;
 	}
-	#RestockCategoriesLabel {
+	#SellCategoriesLabel {
 			position: absolute;
 			font-size: 44.43px;
 			left: 100px;
@@ -152,14 +152,14 @@
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
-	<p id = "RestockCategoriesLabel">Restock</p>
+	<p id = "SellCategoriesLabel">Change Stock</p>
 	<p id = SnacksLabel> Snacks </p>
 	<p id = "DrinksLabel">Drinks </p>
 	<p id = "LunchLabel"> Lunch </p>
 	<p id = "SelectACategory"> Please select a category. </p>
-	<a href = "Restock_Snacks.php"><img id = "SnacksCircle"></a>
-	<a href = "Restock_Drinks.php"><img id = "DrinksCircle"></a>
-	<a href = "Restock_Lunch.php"><img id = "LunchCircle"></a>
+	<a href = "ChangeStock_Snacks.php"><img id = "SnacksCircle"></a>
+	<a href = "ChangeStock_Drinks.php"><img id = "DrinksCircle"></a>
+	<a href = "ChangeStock_Lunch.php"><img id = "LunchCircle"></a>
 	
 </body>
 </html>

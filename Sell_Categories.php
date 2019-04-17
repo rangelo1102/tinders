@@ -13,41 +13,61 @@
 	#TindersTitle {
 			position: absolute;
 			font-size: 20px;
-			left: 30px;
-			top: 5px;
 			font-family: raleway;
 			font-weight: bold;
+			left: 20px;
+			top: 20px;
+			text-decoration: none;
 		}
-
+	
 	#RRestock {
 			font-size: 20px;
 			position: absolute;
-			top: 5px;
-			left: 550px;
+			top: 25px;
+			left: 420px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
-	#RChange {
+		a:visited {
+			color: black;
+		}
+		a:link {
+			color: black;
+		}
+	#RMenu {
 			font-size: 20px;
 			position: absolute;
-			top: 5px;
-			left: 740px;
+			top: 25px;
+			left: 640px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
 	#RSell {
 			font-size: 20px;
 			position: absolute;
-			top: 5px;
-			left: 950px;
+			top: 25px;
+			left: 850px;
+			text-decoration: none;
+			font-family: raleway;
+			font-weight: bold;
+		}
+	#RChange {
+			font-size: 20px;
+			position: absolute;
+			top: 25px;
+			left: 1050px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
 	#RLogout {
 			font-size: 20px;
 			position: absolute;
-			left: 1400px;
-			top: 5px;
+			left: 1390px;
+			top: 29px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -124,13 +144,14 @@
 	}
 </style>
 <body>
-<a href = "Home.php"><p id = "TindersTitle">TINDERS</p></a>
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
-	<a href = "Restock_Categories.php"><p id = "RRestock"> RESTOCK </p></a>
-	<a href = "Menu_Categories.php"><p id = "RChange"> REPORT </p></a>
-	<a href = "Sell_Categories.php"><p id = "RSell"> SELL </p></a>
-	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
+	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
+	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
+	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
+	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
+	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
+	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
 	<p id = "SellCategoriesLabel">Sell</p>
 	<p id = SnacksLabel> Snacks </p>
 	<p id = "DrinksLabel">Drinks </p>

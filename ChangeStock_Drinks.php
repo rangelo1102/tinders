@@ -16,6 +16,7 @@
 	$getProdNames = $conn->query($getProdNamesQuery);
 		?>
 
+
 <!DOCTYPE html>
 <?php
 session_start();
@@ -27,13 +28,13 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
-<title>Tinders: Sell Drinks</title>
+<title>Tinders: Change Drinks</title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
 <style>
 		#New {
-			height: 475px;
+			height: 275px;
 			width: 1200px;
 			background-color: #C4C1C1;
 			position: absolute;
@@ -44,7 +45,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			color: black;
 		}
 		
-		#TindersTitle {
+	#TindersTitle {
 			position: absolute;
 			font-size: 20px;
 			font-family: raleway;
@@ -105,19 +106,19 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#Change {
-			position: absolute;
-			font-size: 44.43px;
-			left: 100px;
-			top: 20px;
-			font-family: raleway;
-			font-weight: bold;
-		}
 		#Product {
 			font-size: 36px;
 			position: absolute;
 			top: 120px;
 			left: 190px;
+			font-family: raleway;
+			font-weight: bold;
+		}
+		#Change {
+			position: absolute;
+			font-size: 44.43px;
+			left: 100px;
+			top: 20px;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -241,9 +242,8 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <body>
 	<p> </p>
 	<!--Ribbon-->
-	<p id = "Change">Sell Drinks</p>
+	<p id = "Change">Change Drinks</p>
 	<img id = "New"> </img>
-	<img id = "Old"> </img>
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
@@ -252,12 +252,10 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
 
 	<!--New Product-->
-	<p id = "Product"> new sale</p>
+	<p id = "Product"> remove</p>
 	<p id = "NameProdSide"> name </p>
-	<p id = "Quantity"> quantity</p>
 	<!--FORMS-->
-	<form action = "selldrinks_backend.php" method = "post">
-	<input type = "number" id = "ProdQty" placeholder=" INPUT QUANTITY SOLD" name = "qty" required>
+	<form action = "changedrinks_backend.php" method = "post">
 		<!--Product Name Drop Down-->
 	<select required id = "DropDownProdName" name = "product">
 		<option value="" hidden>PLEASE SELECT AN ITEM</option>
