@@ -1,3 +1,21 @@
+<?php
+	$host = "localhost";
+	$user = "root";
+	$pass = "";
+	$db = "tinders";
+
+	//connecting to db 
+	$conn = new mysqli($host,$user,$pass,$db);
+	if ($conn->connect_error) {
+    			die("Connection failed: " . $conn->connect_error);
+			}
+
+	$table = "products_drinks";
+	$collumn = "name_product";
+	$getProdNamesQuery = "SELECT * FROM products_drinks";
+	$getProdNames = $conn->query($getProdNamesQuery);
+		?>
+
 <!DOCTYPE html>
 <?php
 //session
@@ -19,7 +37,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	href = "icon.png">
 <style>
 		#New {
-			height: 475px;
+			height: 470px;
 			width: 600px;
 			background-color: #C4C1C1;
 			position: absolute;
@@ -33,7 +51,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			color: black;
 		}
 		#Old {
-			height: 475px;
+			height: 470px;
 			width: 600px;
 			background-color: dimgray;
 			position: absolute;
@@ -162,7 +180,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-size: 25.75px;
 			position: absolute;
 			left: 190px;
-			top: 385px;
+			top: 310px;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -177,8 +195,8 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		#PriceOldSide {
 			font-size: 25.75px;
 			position: absolute;
-			top: 385px;
-			left: 1290px;
+			top: 310px;
+			left: 1020px;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -212,25 +230,13 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#DropDownProdCateg {
+		#ProdPrice {
 			height: 30px;
-			width: 350px;
+			width: 360px;
 			background-color: gray;
 			position: absolute;
 			left: 190px;
 			top: 370px;
-			border-radius: 10%;
-			border: none;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#ProdPrice {
-			height: 30px;
-			width: 200px;
-			background-color: gray;
-			position: absolute;
-			left: 190px;
-			top: 450px;
 			border-radius: 10%;
 			border: none;
 			font-family: raleway;
@@ -258,13 +264,13 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#DropDownOldProdPrice {
+		#OldProdPrice {
 			height: 30px;
-			width: 200px;
+			width: 360px;
 			background-color: gray;
 			position: absolute;
-			left: 1160px;
-			top: 450px;
+			left: 1000px;
+			top: 370px;
 			border-radius: 10%;
 			border: none;
 			font-family: raleway;
@@ -285,8 +291,8 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		#QtyOldSide {
 			color: black;
 			position: absolute;
-			left: 1250px;
-			top: 480px;
+			left: 850px;
+			top: 390px;
 			font-family: raleway;
 			font-weight: bold;
 			font-size: 25.75px;
@@ -294,20 +300,22 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		#QtyOldProdTextbox {
 			background-color: gray;
 			position: absolute;
-			left: 1200px;
-			top: 540px;
+			left: 1070px;
+			top: 450px;
+			width: 290px;
 			border-radius: 10%;
 			border: none;
 			font-family: raleway;
 			font-weight: bold;
+			height: 30px;
 		}
-		#QtyProdSide {
+		#QtyNewProdSide {
 			height: 30px;
 			width: 200px;
 			color: black;
 			position: absolute;
 			left: 190px;
-			top: 480px;
+			top: 390px;
 			font-family: raleway;
 			font-weight: bold;
 			font-size: 25.75px;
@@ -316,11 +324,53 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			background-color: gray;
 			position: absolute;
 			left: 190px;
+			top: 450px;
+			border-radius: 10%;
+			border: none;
+			font-family: raleway;
+			height: 30px;
+			font-weight: bold;
+			width: 290px;
+		}
+		#prodCostNew {
+			position: absolute;
+			font-size: 25.75px;
+			top: 480px;
+			left: 190px;
+			font-family: raleway;
+			font-weight: bold;
+		}
+		#NewProdCostTextBox {
+			background-color: gray;
+			position: absolute;
+			left: 190px;
 			top: 540px;
 			border-radius: 10%;
 			border: none;
 			font-family: raleway;
+			height: 30px;
 			font-weight: bold;
+			width: 230px;
+		}
+		#OldProdCost {
+			position: absolute;
+			font-size: 25.75px;
+			top: 480px;
+			left: 1170px;
+			font-family: raleway;
+			font-weight: bold;
+		}
+		#OldProdCostTextbox {
+			background-color: gray;
+			position: absolute;
+			left: 1130px;
+			top: 540px;
+			border-radius: 10%;
+			border: none;
+			font-family: raleway;
+			height: 30px;
+			font-weight: bold;
+			width: 230px;
 		}
 	</style>
 </head>
@@ -344,39 +394,34 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 	<!--New Product-->
 	<p id = "NameProdSide"> name (do not use spaces)</p>
-	<p id = "CategProdSide"> category </p>
-		<select required id = "DropDownProdCateg">
-		<option value=""hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A CATEGORY</option>
-    	<option value = "1">Category 1</option>
-    	<option value = "2">Category 2</option>
-    	<option value = "3">Category 3</option>
-		</select>
 	<input type = "text" id = "DropDownProdName" name = "prodname" placeholder = " INPUT NAME">
-	<input type = "number" id = "ProdPrice" name = "newprodprice"  placeholder=" INPUT PRICE">
 	<p id = "PriceProdSide"> price </p>
-	<p id = "QtyProdSide"> quantity</p>
-	<input type = "number" id = "QtyNewProdTextbox" name = " " placeholder=" INSERT QUANTITY"
+	<input type = "number" id = "ProdPrice" name = "newprodprice"  placeholder=" INPUT PRICE">
+	<p id = "QtyNewProdSide"> quantity</p>
+	<input type = "number" id = "QtyNewProdTextbox" name = " " placeholder=" INPUT QUANTITY">
+	<p id = "prodCostNew"> production cost</p>
+	<input type = "number" id = "NewProdCostTextBox" name = " " placeholder=" INPUT PROD COST">
+
+
 	<!--Old Product-->
 	<p id = "NameOldSide"> name (do not use spaces)</p>
 	<select required id = "DropDownProdNameCateg">
 		<option value="" hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A PRODUCT</option>
-		<option value "1">Product 1 </option>
-		<option value "2">Product 2 </option>
-		<option value "3">Product 3 </option>
+		<?php 
+			if ($getProdNames) {
+				while ($row=mysqli_fetch_array($getProdNames)) {
+					$prodName=$row["$collumn"];
+					echo "<option value = ".$prodName.">$prodName<br></option>";
+				}
+			}
+			?>
 	</select>
-
-	<p id = "CategOldSide"> category</p>
-	<select required id = "DropDownOldProdCateg">
-		<option value="" hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A CATEGORY</option>
-		<option value "1">Category 1 </option>
-		<option value "2">Category 2 </option>
-		<option value "3">Category 3 </option>
-	</select>
-	<p id = "PriceOldSide"> price</p>
-	<input type = "number" id = "DropDownOldProdPrice" placeholder=" INPUT PRICE"> </img>
-
-	<p id = "QtyOldSide"> quantity</p>
+	<p id = "PriceOldSide"> price (leave empty to retain)</p>
+	<input type = "number" id = "OldProdPrice" placeholder=" INPUT PRICE"> </img>
+	<p id = "QtyOldSide"> quantity (negative values to reduce stock)</p>
 	<input type = "number" id = "QtyOldProdTextbox" placeholder = " INPUT QUANTITY">
+	<p id = "OldProdCost"> production cost</p>
+	<input type = "number" id = "OldProdCostTextbox" placeholder = " INPUT PROD COST">
 
 	<!--UpdateButton-->
 	<img id = "UpdateButton"> </img>
