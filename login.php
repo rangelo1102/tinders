@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-//(Queeer)y
+//query to check if credentials are in database
 $query = "SELECT id, username, password FROM login WHERE (username='".$username."' and password='".md5($password)."')";
 $result = $conn->query($query);
 // or die ("failed to query database ".mysql_error());
@@ -25,10 +25,13 @@ $result = $conn->query($query);
 $row = mysqli_fetch_array($result);
 $hashedpassword = md5($password);
 print_r($row);
+//give access if user exists
 if($row["username"]== $username && $row["password"]== $hashedpassword){
 	header('Location: Home.php');
 	$_SESSION['user_id'] = $row["id"];
-}else{
+}
+//deny access if user does not exist
+else{
 	echo "<script type='text/javascript'>
 	window.confirm('Login Failed. Please Check Your Credentials');
 	window.location.href = 'index.php';

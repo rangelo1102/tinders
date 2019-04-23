@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -19,6 +20,7 @@
 
 <!DOCTYPE html>
 <?php
+//prevents users from accessing page without logging in
 session_start();
 if ( isset( $_SESSION['user_id'] ) ) {
 } else {
@@ -243,7 +245,9 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p> </p>
 	<!--Ribbon-->
 	<p id = "Change">Change Snacks</p>
+	<!--Backgrounds-->
 	<img id = "New"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
@@ -260,7 +264,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<select required id = "DropDownProdName" name = "product">
 		<option value="" hidden>PLEASE SELECT AN ITEM</option>
 		<?php 
-			if ($getProdNames) {
+			if ($getProdNames) {//update names of product based on data base to keep up with database
 				while ($row=mysqli_fetch_array($getProdNames)) {
 					$prodName=$row["$collumn"];
 					echo "<option value = ".$prodName.">$prodName<br></option>";

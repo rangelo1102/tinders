@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -167,24 +168,29 @@
 	}
 </style>
 <body>
+	<!--Backgrounds-->
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
+	<!--Header-->
 	<p id = "ReportMenuLabel"> Daily Reports</p>
+	<!--Place to delete reports-->
 	<a href = "DeleteReports.php"><img id = "EditReportsCircle"></a>
 	<p id = "EditReportsLabel">Delete a Report </p>
+	<!--Table-->
 	<table id = "ReportTable">
-		<tr>
+		<tr><!--Table Headers-->
 			<th>Date (YYYY-MM-DD)</th>
 			<th>Profit</th>
 			<th>Revenue</th>
 		</tr>
-			<?php 
+			<?php //show overall profit and revenue per day
 			if ($getProds) {
 				while ($row=mysqli_fetch_array($getProds)) {
 					$date = $row["$dateCollumn"];

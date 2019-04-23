@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -20,6 +21,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+//start session to prevent users from accessing without logging in
 if ( isset( $_SESSION['user_id'] ) ) {
 } else {
     header("Location: index.php");
@@ -241,9 +243,11 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 <body>
 	<p> </p>
-	<!--Ribbon-->
+	<!--Header-->
 	<p id = "Change">Change Drinks</p>
+	<!--Background-->
 	<img id = "New"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
@@ -259,7 +263,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		<!--Product Name Drop Down-->
 	<select required id = "DropDownProdName" name = "product">
 		<option value="" hidden>PLEASE SELECT AN ITEM</option>
-		<?php 
+		<?php //get product names from user input
 			if ($getProdNames) {
 				while ($row=mysqli_fetch_array($getProdNames)) {
 					$prodName=$row["$collumn"];

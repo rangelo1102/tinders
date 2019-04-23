@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -241,9 +242,10 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 <body>
 	<p> </p>
-	<!--Ribbon-->
+	<!--Header-->
 	<p id = "Change">Remove Report</p>
 	<img id = "New"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
@@ -260,7 +262,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<select required id = "DropDownProdName" name = "date">
 		<option value="" hidden>PLEASE SELECT A DATE</option>
 		<?php 
-			if ($getDates) {
+			if ($getDates) {//get product names from database to keep up with new stock
 				while ($row=mysqli_fetch_array($getDates)) {
 					$displayDates=$row["$collumn"];
 					echo "<option value = ".$displayDates.">$displayDates<br></option>";

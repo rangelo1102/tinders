@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -154,17 +155,20 @@
 	}
 </style>
 <body>
+	<!--Backgrounds-->
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
+	<!--Header-->
 	<p id = "LunchMenuLabel"> Lunch Report</p>
 	<table id = "LunchTable">
-		<tr>
+		<tr><!--Table headers-->
 			<th>Name </th>
 			<th>Quantity Available</th>
 			<th>Price</th>
@@ -174,7 +178,7 @@
 			<th>Profit</th>
 		</tr>
 			<?php 
-			if ($getProds) {
+			if ($getProds) { //get all information from lunch database
 				while ($row=mysqli_fetch_array($getProds)) {
 					$prodName=$row["$nameCollumn"];
 					$prodStock = $row["$stockCollumn"];
@@ -183,6 +187,7 @@
 					$prodSold = $row["$soldCollumn"];
 					$prodRev = $row["$revenueCollumn"];
 					$prodProf = $prodRev - (($prodStock + $prodSold) * $prodCost);
+					//display all info from database
 					echo "<tr>
 					<td>$prodName</td>
 					<td>$prodStock</td>
@@ -202,12 +207,12 @@
 	$totalRevQueryResult = mysqli_query($conn, $totalRevQuery);
 	$revValues = mysqli_fetch_assoc($totalRevQueryResult);
 	$legitRev = $revValues['value_rev'];
-
+	//get total production cost
 	$totalProdCostQuery = "SELECT SUM((sold_product + amount_product) * production_cost) AS prod_cost FROM products_lunch";
 	$totalProdCostQueryResult = mysqli_query($conn, $totalProdCostQuery);
 	$costValues = mysqli_fetch_assoc($totalProdCostQueryResult);
 	$legitCost = $costValues['prod_cost'];
-
+	//calculate profit
 	$lunchProfit = $legitRev - $legitCost;
 	echo "<p id = 'TotalRev'> Total Revenue: Php $legitRev</p>
 		  <p id = 'TotalProf'> Total Profit: Php $lunchProfit </p>";	

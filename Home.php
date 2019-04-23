@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -15,7 +16,7 @@
 		WHERE day = curdate()";
 	$checkIfDateExists = mysqli_query($conn, $checkIfDateExistsQuery);
 	$row = mysqli_fetch_array($checkIfDateExists);
-
+//restart revenue and profit for the day
 	if ($row === null) {
 		$resetDrinksQuery = "UPDATE products_drinks
 		SET revenue = 0";
@@ -217,24 +218,29 @@ if ( isset( $_SESSION['user_id'] ) ) {
 </head>
 
 <body>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
+	<!--Greeting-->
 	<h1 id = "Head"> Morning, I suppose </h1>
+	<!--Hyperlink circles-->
 	<a href = "Restock_Categories.php"><div id = "CircleRestock"></div></a>
 	<a href = "Menu_Categories.php"><div id = "CirlceMenu"></div></a>
 	<a href = "Sell_Categories.php"><div id = "CirlceSell"></div> </a>
+	<a href = "ChangeStock_Categories.php"><img id = "ChangeCirc"></a>
+	<!--Labels for hyperlink circles-->
 	<p id = "RestockLabel">RESTOCK</p>
 	<p id = "MenuLabel"> REPORT </p>
 	<p id = "SellLabel">SELL</p>
-	<p id = "RestockDesc">New day, new stock. <br>Update your current pricing and stock. <br></p>
-	<p id = "MenuDesc"> What's available? <br>Stock, pricing, and total revenue.</p>
-	<p id = "SellDesc">Sales are always welcome. <br> Click here to record a new purchase. </p>
-	<a href = "ChangeStock_Categories.php"><img id = "ChangeCirc"></a>
 	<p id = "ChangeLabel"> CHANGE </p>
+	<!--Descriptions-->
+	<p id = "RestockDesc">New day, new stock. <br>Update your current pricing and stock. <br></p>
+	<p id = "MenuDesc"> What's available? <br>Stock, pricing, revenue, profit, and records.</p>
+	<p id = "SellDesc">Sales are always welcome. <br> Click here to record a new purchase. </p>
 	<p id = "ChangeDesc"> Drop items from the inventory. </p>
 </body>
 </html>

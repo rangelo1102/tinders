@@ -1,4 +1,5 @@
 <?php
+	//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -10,10 +11,12 @@
     			die("Connection failed: " . $conn->connect_error);
 			}
 
+	//get product to delete
 	$bye = $_POST['date'];
 	$deleteRowQuery = "DELETE FROM dailyreports
 		WHERE day = '$bye'";
 
+	//delete product
 	$result = $conn->query($deleteRowQuery);
 	echo "<script type='text/javascript'>
 		window.confirm('Delete successful. That day is no longer in the reports.');

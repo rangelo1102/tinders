@@ -144,19 +144,23 @@
 	}
 </style>
 <body>
+	<!--Background-->
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
+	<!--Page Labels-->
 	<p id = "SellCategoriesLabel">Change Stock</p>
 	<p id = SnacksLabel> Snacks </p>
 	<p id = "DrinksLabel">Drinks </p>
 	<p id = "LunchLabel"> Lunch </p>
 	<p id = "SelectACategory"> Please select a category. </p>
+	<!--Circle Hyperlinks-->
 	<a href = "ChangeStock_Snacks.php"><img id = "SnacksCircle"></a>
 	<a href = "ChangeStock_Drinks.php"><img id = "DrinksCircle"></a>
 	<a href = "ChangeStock_Lunch.php"><img id = "LunchCircle"></a>

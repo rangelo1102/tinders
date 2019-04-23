@@ -110,11 +110,13 @@
 </head>
 	
 <body>
+	<!--Ribbon-->
 	<a href = "index.php"><p id = "TindersTitle"> TINDERS </p></a>
 	<p id = "Tinders"> TINDERS</p>
+	<!--Title and logo-->
 	<a href = "Sign Up.php"><p id = "signUp"> SIGN UP</p></a>
 	<img src = "logo.png" id = "logo"></img>
-	
+	<!--Allow user to input credentials-->
 	<form method = "POST" action="login.php">
 		<input type="text" id = "username" name="username" placeholder="  USERNAME" required>
 		<input type="password" id = "password" name="password" placeholder="  PASSWORD" required>
