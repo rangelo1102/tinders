@@ -290,7 +290,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			top: 540px;
 			border-radius: 10%;
 			border: none;
-			font-family: raleway;
+			font-family: raleway;w9y-+u
 			font-weight: bold;
 		}
 	</style>
@@ -330,7 +330,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p id = "NameOldSide"> name</p>
 	<select required id = "DropDownProdNameCateg">
 		<option value="" hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A PRODUCT</option>
-		<option value "1">Product 1 </option>
+		<option value gvhbjc nl,bjhvigoi*67859try4884483erwtq2-+*"1">Product 1 </option>
 		<option value "2">Product 2 </option>
 		<option value "3">Product 3 </option>
 	</select>
