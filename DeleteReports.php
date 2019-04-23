@@ -1,3 +1,22 @@
+<?php
+	$host = "localhost";
+	$user = "root";
+	$pass = "";
+	$db = "tinders";
+
+	//connecting to db 
+	$conn = new mysqli($host,$user,$pass,$db);
+	if ($conn->connect_error) {
+    			die("Connection failed: " . $conn->connect_error);
+			}
+
+	$table = "dailyreports";
+	$collumn = "day";
+	$getDatesQuery = "SELECT * FROM dailyreports";
+	$getDates = $conn->query($getDatesQuery);
+		?>
+
+
 <!DOCTYPE html>
 <?php
 session_start();
@@ -9,68 +28,81 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
-<title>Tinders: Sell</title>
+<title>Tinders: Delete Report</title>
 	<link rel = "icon"
 	type = "image/png"
 	href = "icon.png">
 <style>
 		#New {
-			height: 475px;
+			height: 275px;
 			width: 1200px;
 			background-color: #C4C1C1;
 			position: absolute;
 			left: 175px;
 			top: 150px;
 		}
-		a:visited {
+		a{
 			color: black;
 		}
 		
-		#TindersTitle {
+	#TindersTitle {
 			position: absolute;
 			font-size: 20px;
-			left: 30px;
-			top: 5px;
 			font-family: raleway;
 			font-weight: bold;
-		}
-		#Change {
-			position: absolute;
-			font-size: 44.43px;
-			left: 100px;
+			left: 20px;
 			top: 20px;
+			text-decoration: none;
+		}
+	
+	#RRestock {
+			font-size: 20px;
+			position: absolute;
+			top: 25px;
+			left: 420px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#RRestock {
+		a:visited {
+			color: black;
+		}
+		a:link {
+			color: black;
+		}
+	#RMenu {
 			font-size: 20px;
 			position: absolute;
-			top: 5px;
-			left: 550px;
+			top: 25px;
+			left: 640px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#RChange {
+	#RSell {
 			font-size: 20px;
 			position: absolute;
-			top: 5px;
-			left: 740px;
+			top: 25px;
+			left: 850px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#RSell {
+	#RChange {
 			font-size: 20px;
 			position: absolute;
-			top: 5px;
-			left: 950px;
+			top: 25px;
+			left: 1050px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#RLogout {
+	#RLogout {
 			font-size: 20px;
 			position: absolute;
-			left: 1400px;
-			top: 5px;
+			left: 1390px;
+			top: 29px;
+			text-decoration: none;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -82,20 +114,19 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-family: raleway;
 			font-weight: bold;
 		}
+		#Change {
+			position: absolute;
+			font-size: 44.43px;
+			left: 100px;
+			top: 20px;
+			font-family: raleway;
+			font-weight: bold;
+		}
 		#Quantity {
 			font-size: 25.75px;
 			position: absolute;
 			top: 350px;
-			left: 850px;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#OldProd {
-			position: absolute;
-			font-size: 36px;
-			top: 120px;
-			left: 1160px;
-			color: white;
+			left: 280px;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -104,14 +135,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-size: 25.75px;
 			left: 280px;
 			top: 225px;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#NameOldSide {
-			position: absolute;
-			font-size: 25.75px;
-			top: 225px;
-			left: 1285px;
 			font-family: raleway;
 			font-weight: bold;
 		}
@@ -131,30 +154,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#CategOldSide {
-			position: absolute;
-			font-size: 25.75px;
-			top: 305px;
-			left: 1245px;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#PriceOldSide {
-			font-size: 25.75px;
-			position: absolute;
-			top: 385px;
-			left: 1290px;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		#Update {
-			font-size: 55.27px;
-			position: absolute;
-			top: 470px;
-			left:680px;
-			font-family: raleway;
-			font-weight: bold;
-		}
 		#UpdateButton {
 			height: 75px;
 			width: 250px;
@@ -163,7 +162,9 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			left: 650px;
 			background-color: dimgray;
 			border-radius: 20%;
-			
+			font-size: 55.27px;
+			font-family: raleway;
+			font-weight: bold;
 		}
 		#DropDownProdName {
 			height: 30px;
@@ -206,32 +207,14 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			width: 200px;
 			background-color: gray;
 			position: absolute;
-			left: 850px;
+			left: 280px;
 			top: 410px;
 			border-radius: 10%;
 			border: none;
 			font-family: raleway;
 			font-weight: bold;
 	}
-		#QtyOldSide {
-			color: black;
-			position: absolute;
-			left: 1250px;
-			top: 480px;
-			font-family: raleway;
-			font-weight: bold;
-			font-size: 25.75px;
-		}
-		#QtyOldProdTextbox {
-			background-color: gray;
-			position: absolute;
-			left: 1200px;
-			top: 540px;
-			border-radius: 10%;
-			border: none;
-			font-family: raleway;
-			font-weight: bold;
-		}
+		
 		#QtyProdSide {
 			height: 30px;
 			width: 200px;
@@ -259,33 +242,34 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <body>
 	<p> </p>
 	<!--Ribbon-->
-	<a href = "Home.php"><p id = "TindersTitle">TINDERS</p></a>
-	<p id = "Change">SELL</p>
+	<p id = "Change">Remove Report</p>
 	<img id = "New"> </img>
-	<img id = "Old"> </img>
-	<a href = "Restock.php"><p id = "RRestock"> RESTOCK </p></a>
-	<a href = "Update Stock.php"><p id = "RChange"> CHANGE </p></a>
-	<a href = "Sell.php"><p id = "RSell"> SELL </p></a>
-	<a href = "logout.php"><p id = "RLogout"> LOG OUT</p></a>
+	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
+	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
+	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
+	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
+	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
+	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
 
 	<!--New Product-->
-	<p id = "Product"> new product</p>
-	<input type = "text" id = "DropDownProdName" name = "prodname" placeholder=" INPUT NAME">
+	<p id = "Product"> remove</p>
 	<p id = "NameProdSide"> name </p>
-	<p id = "CategProdSide"> category </p>
-	<select required id = "DropDownProdCateg">
-		<option value="" hidden>CHOOSE A CATEGORY</option>
-		<option value="1">Category 1</option>
-		<option value="2">Category 2</option>
-		<option value="3">Category 3</option>
+	<!--FORMS-->
+	<form action = "changereport_backend.php" method = "post">
+		<!--Product Name Drop Down-->
+	<select required id = "DropDownProdName" name = "date">
+		<option value="" hidden>PLEASE SELECT A DATE</option>
+		<?php 
+			if ($getDates) {
+				while ($row=mysqli_fetch_array($getDates)) {
+					$displayDates=$row["$collumn"];
+					echo "<option value = ".$displayDates.">$displayDates<br></option>";
+				}
+			}
+		?>
 	</select>
-	<input type = "text" id = "ProdPrice" name = "newprodprice" placeholder=" INPUT PRICE">
-	<img id = "DropDownProdPrice"></img>
-	<p id = "PriceProdSide"> price </p>
-	<p id = "Quantity"> quantity</p>
-	<input type = "text" id = "ProdQty" placeholder=" INPUT QUANTITY SOLD">
-	<!--Update Button -->
-	<img id = "UpdateButton"> </img>
-	<p id = "Update"> update </p>
+	<button type = "submit" id = "UpdateButton" value = "sellThat">update</button>
+	</form>
+	
 </body>
 </html>
