@@ -211,13 +211,20 @@
 	$lunchProfit = $legitRev - $legitCost;
 	echo "<p id = 'TotalRev'> Total Revenue: Php $legitRev</p>
 		  <p id = 'TotalProf'> Total Profit: Php $lunchProfit </p>";	
-
+	
 	//get most popular product
-	$getMostPopQuery = "SELECT name_product, MAX(sold_product) FROM products_lunch GROUP BY name_product";
+		  //get the highest quantity sold
+	$getMostPopQuery = "SELECT MAX(sold_product) AS max_product from products_lunch";
 	$getMostPop = mysqli_query($conn, $getMostPopQuery);
 	$getMP = mysqli_fetch_assoc($getMostPop);
-	$legitMostPop = $getMP['name_product'];
-	echo "<p id = 'MostPopularProd'> Most Popular Product: $legitMostPop </p>";
+	$legitMostPop = $getMP['max_product'];
+			//get the product with the highest quantity sold
+	$getRowQuery = "SELECT name_product AS popular_row FROM products_lunch WHERE sold_product = $legitMostPop";
+	$getRow = mysqli_query($conn, $getRowQuery);
+	$get = mysqli_fetch_assoc($getRow);
+	$legitName = $get['popular_row'];
+			//display result
+	echo "<p id = 'MostPopularProd'> Most Popular Product: $legitName </p>";
 	?>
 </body>
 </html>

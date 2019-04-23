@@ -130,7 +130,7 @@
 	}
 	#TotalProf {
 		font-family: raleway;
-		font-size: 30px;
+		font-size: 25px;
 		font-weight: bold;
 		position: absolute;
 		left: 1000px;
@@ -138,11 +138,19 @@
 	}
 	#TotalRev {
 		font-family: raleway;
-		font-size: 30px;
+		font-size: 25px;
 		font-weight: bold;
 		position: absolute;
 		left: 1000px;
 		top: 70px;
+	}
+	#MostPopularProd {
+		font-family:raleway;
+		font-size: 25px;
+		font-weight: bold;
+		position: absolute;
+		left: 1000px;
+		top: 130px;
 	}
 </style>
 <body>
@@ -204,6 +212,20 @@
 	$snacksProfit = $legitRev - $legitCost;
 	echo "<p id = 'TotalRev'> Total Revenue: Php $legitRev</p>
 		  <p id = 'TotalProf'> Total Profit: Php $snacksProfit </p>";	
+
+		  //get most popular product
+		  //get the highest quantity sold
+	$getMostPopQuery = "SELECT MAX(sold_product) AS max_product from products_snacks";
+	$getMostPop = mysqli_query($conn, $getMostPopQuery);
+	$getMP = mysqli_fetch_assoc($getMostPop);
+	$legitMostPop = $getMP['max_product'];
+			//get the product with the highest quantity sold
+	$getRowQuery = "SELECT name_product AS popular_row FROM products_snacks WHERE sold_product = $legitMostPop";
+	$getRow = mysqli_query($conn, $getRowQuery);
+	$get = mysqli_fetch_assoc($getRow);
+	$legitName = $get['popular_row'];
+			//display result
+	echo "<p id = 'MostPopularProd'> Most Popular Product: $legitName </p>";
 	?>
 </body>
 </html>
