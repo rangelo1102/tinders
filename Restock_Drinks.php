@@ -198,15 +198,10 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			font-family: raleway;
 			font-weight: bold;
 		}
-		#Update {
+		#UpdateButton {
 			font-size: 55.27px;
-			position: absolute;
-			top: 600px;
-			left:680px;
 			font-family: raleway;
 			font-weight: bold;
-		}
-		#UpdateButton {
 			height: 75px;
 			width: 250px;
 			position: absolute;
@@ -214,7 +209,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			left: 650px;
 			background-color: dimgray;
 			border-radius: 20%;
-			
 		}
 		#DropDownProdName {
 			height: 30px;
