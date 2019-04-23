@@ -258,7 +258,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<form action = "changereport_backend.php" method = "post">
 		<!--Product Name Drop Down-->
 	<select required id = "DropDownProdName" name = "date">
-		<option value="" hidden>PLEASE SELECT AN ITEM</option>
+		<option value="" hidden>PLEASE SELECT A DATE</option>
 		<?php 
 			if ($getDates) {
 				while ($row=mysqli_fetch_array($getDates)) {
