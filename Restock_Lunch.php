@@ -15,7 +15,8 @@
 	$collumn = "name_product";
 	$getProdNamesQuery = "SELECT * FROM products_lunch";
 	$getProdNames = $conn->query($getProdNamesQuery);
-		?>
+
+?>
 
 <!DOCTYPE html>
 <?php
@@ -77,57 +78,57 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			text-decoration: none;
 		}
 	
-	#RRestock {
-			font-size: 20px;
-			position: absolute;
-			top: 25px;
-			left: 420px;
-			text-decoration: none;
-			font-family: raleway;
-			font-weight: bold;
-		}
-		a:visited {
-			color: black;
-		}
-		a:link {
-			color: black;
-		}
-	#RMenu {
-			font-size: 20px;
-			position: absolute;
-			top: 25px;
-			left: 640px;
-			text-decoration: none;
-			font-family: raleway;
-			font-weight: bold;
-		}
-	#RSell {
-			font-size: 20px;
-			position: absolute;
-			top: 25px;
-			left: 850px;
-			text-decoration: none;
-			font-family: raleway;
-			font-weight: bold;
-		}
-	#RChange {
-			font-size: 20px;
-			position: absolute;
-			top: 25px;
-			left: 1050px;
-			text-decoration: none;
-			font-family: raleway;
-			font-weight: bold;
-		}
-	#RLogout {
-			font-size: 20px;
-			position: absolute;
-			left: 1390px;
-			top: 29px;
-			text-decoration: none;
-			font-family: raleway;
-			font-weight: bold;
-		}
+		#RRestock {
+				font-size: 20px;
+				position: absolute;
+				top: 25px;
+				left: 420px;
+				text-decoration: none;
+				font-family: raleway;
+				font-weight: bold;
+			}
+			a:visited {
+				color: black;
+			}
+			a:link {
+				color: black;
+			}
+		#RMenu {
+				font-size: 20px;
+				position: absolute;
+				top: 25px;
+				left: 640px;
+				text-decoration: none;
+				font-family: raleway;
+				font-weight: bold;
+			}
+		#RSell {
+				font-size: 20px;
+				position: absolute;
+				top: 25px;
+				left: 850px;
+				text-decoration: none;
+				font-family: raleway;
+				font-weight: bold;
+			}
+		#RChange {
+				font-size: 20px;
+				position: absolute;
+				top: 25px;
+				left: 1050px;
+				text-decoration: none;
+				font-family: raleway;
+				font-weight: bold;
+			}
+		#RLogout {
+				font-size: 20px;
+				position: absolute;
+				left: 1390px;
+				top: 29px;
+				text-decoration: none;
+				font-family: raleway;
+				font-weight: bold;
+			}
 		#Change {
 			position: absolute;
 			font-size: 44.43px;
