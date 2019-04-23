@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-//session
+//session; prevent users from accessing page without loggin in
 session_start();
 if ( isset( $_SESSION['user_id'] ) ) {
 } else {
@@ -155,19 +155,24 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	}
 </style>
 <body>
+	<!--Backgrounds-->
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
+	<!--Header-->
 	<p id = "RestockCategoriesLabel">Restock</p>
+	<!--Labels-->
 	<p id = SnacksLabel> Snacks </p>
 	<p id = "DrinksLabel">Drinks </p>
 	<p id = "LunchLabel"> Lunch </p>
 	<p id = "SelectACategory"> Please select a category. </p>
+	<!--Circle hyperlinks-->
 	<a href = "Restock_Snacks.php"><img id = "SnacksCircle"></a>
 	<a href = "Restock_Drinks.php"><img id = "DrinksCircle"></a>
 	<a href = "Restock_Lunch.php"><img id = "LunchCircle"></a>

@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -17,6 +18,7 @@
 		?>
 <!DOCTYPE html>
 <?php
+//prevent users from opening page before loggin in
 session_start();
 if ( isset( $_SESSION['user_id'] ) ) {
 } else {
@@ -240,27 +242,33 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 <body>
 	<p> </p>
-	<!--Ribbon-->	
+	<!--Backgrounds-->
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
-<p id = "Change">Sell Snacks</p>
+	
+	<!--Header-->
+	<p id = "Change">Sell Snacks</p>
+
 	<!--New Product-->
 	<p id = "Product"> new sale</p>
 	<p id = "NameProdSide"> name </p>
 	<p id = "Quantity"> quantity</p>
-	<!--FORMS-->
+
+	<!--FORMS TO SELL PRODUCTS-->
 	<form action = "sellsnacks_backend.php" method = "post">
 	<input type = "number" id = "ProdQty" placeholder=" INPUT QUANTITY SOLD" name = "qty" required>
 		<!--Product Name Drop Down-->
 	<select required id = "DropDownProdName" name = "product">
 		<option value="" hidden>PLEASE SELECT AN ITEM</option>
 		<?php 
+		//get product names from the database to match with any new products
 			if ($getProdNames) {
 				while ($row=mysqli_fetch_array($getProdNames)) {
 					$prodName=$row["$collumn"];

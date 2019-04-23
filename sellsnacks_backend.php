@@ -1,4 +1,5 @@
 <?php
+//database credentials
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -19,14 +20,11 @@ $stockQuery = "SELECT amount_product FROM products_snacks WHERE name_product= '$
 $getAvailableStock = $conn->query($stockQuery);
 $res = mysqli_fetch_row($getAvailableStock);
 $availableStock = $res[0]; 
-//$availableStock = mysqli_fetch_object($getAvailableStockFromTable);
-
-
 
 //select products table
 
 //update quantity of available products
-if ($quantity > $zero and $quantity <= $availableStock) {
+if ($quantity > $zero and $quantity <= $availableStock) { //only update products given proper input
 	$getrow = "SELECT * FROM products_snacks";
 	$result = $conn->query($getrow);
 	$updateStock = "UPDATE products_snacks
@@ -40,14 +38,14 @@ if ($quantity > $zero and $quantity <= $availableStock) {
 		</script>
 	";
 	}
-elseif ($quantity < $zero){
+elseif ($quantity < $zero){ //prevents negative input
 	echo "<script type='text/javascript'>
 	window.confirm('Please select a positive integer.');
 	window.location.href = 'Sell_Snacks.php';
 	</script>
 	";
 	}
-elseif ($quantity >= $availableStock) {
+elseif ($quantity >= $availableStock) { //prevents putting in more quantity demanded over stock
 	echo "<script type='text/javascript'>
 	window.confirm('There are not enough goods. Please restock.');
 	window.location.href = 'Sell_Snacks.php';

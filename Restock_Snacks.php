@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -18,15 +19,12 @@
 
 <!DOCTYPE html>
 <?php
-//session
+//session; prevent users from accessing without logging in
 session_start();
 if ( isset( $_SESSION['user_id'] ) ) {
 } else {
     header("Location: index.php");
 }
-
-
-
 ?>
 <html>
 <head>
@@ -377,10 +375,12 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 <body>
 	<p> </p>
-	<!--Banner -->
+	<!--Header-->
 	<p id = "Change">Restock Snacks</p>
+	<!--Backgrounds-->
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
@@ -392,22 +392,25 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p id = "Product"> new product</p>
 	<p id = "OldProd"> old product</p>
 
-	<!--New Product-->
+	<!--New Product Restock-->
 	<p id = "NameProdSide"> name (do not use spaces)</p>
 	<input type = "text" id = "DropDownProdName" name = "prodname" placeholder = " INPUT NAME">
+	<!--new product price-->
 	<p id = "PriceProdSide"> price </p>
 	<input type = "number" id = "ProdPrice" name = "newprodprice"  placeholder=" INPUT PRICE">
+	<!--new product quantity-->
 	<p id = "QtyNewProdSide"> quantity</p>
 	<input type = "number" id = "QtyNewProdTextbox" name = " " placeholder=" INPUT QUANTITY">
+	<!--new product production cost-->
 	<p id = "prodCostNew"> production cost</p>
 	<input type = "number" id = "NewProdCostTextBox" name = " " placeholder=" INPUT PROD COST">
 
 
-	<!--Old Product-->
+	<!--Old Product Update Details-->
 	<p id = "NameOldSide"> name (do not use spaces)</p>
 	<select required id = "DropDownProdNameCateg">
 		<option value="" hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A PRODUCT</option>
-		<?php 
+		<?php //get product names from database to keep up with new products
 			if ($getProdNames) {
 				while ($row=mysqli_fetch_array($getProdNames)) {
 					$prodName=$row["$collumn"];
@@ -416,10 +419,13 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			}
 			?>
 	</select>
+	<!--update price-->
 	<p id = "PriceOldSide"> price (leave empty to retain)</p>
 	<input type = "number" id = "OldProdPrice" placeholder=" INPUT PRICE"> </img>
+	<!--update qty available-->
 	<p id = "QtyOldSide"> quantity (negative values to reduce stock)</p>
 	<input type = "number" id = "QtyOldProdTextbox" placeholder = " INPUT QUANTITY">
+	<!--update production cost-->
 	<p id = "OldProdCost"> production cost</p>
 	<input type = "number" id = "OldProdCostTextbox" placeholder = " INPUT PROD COST">
 

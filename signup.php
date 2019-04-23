@@ -3,17 +3,17 @@
 //credentials and stuff
 //session_start();
 
+//credential to connect to database
 $host = "localhost";
 $user = "root";
 $pass = "";
 $db ="tinders";
 
-// initialize
+//collect info from sign up page
 $uname = filter_input(INPUT_POST, 'newUser');
 $pword = filter_input(INPUT_POST, 'newPass');
 $cPass = filter_input(INPUT_POST, 'confirmPass');
 
-//echo $uname, $pword, $cPass;
 
 // connect to the database
 $conn = new mysqli($host,$user,$pass,$db);
@@ -28,14 +28,15 @@ if (isset($uname)&&isset($pword)&&isset($cPass)) {
 		//create user
 		$pword = md5($pword);
 		$query = "INSERT INTO login (username, password) VALUES ('".$_POST["newUser"]."', '".md5($_POST["newPass"])."')";
-		//mysqli_query($conn,$query);
 
+		//direct user to homepage
 		if (mysqli_query($conn, $query)) {
 			echo "<script type='text/javascript'>
 				window.confirm('Account Sucessfully Created');
 				window.location.href = 'Home.php';
 				</script>";
-		} else {
+		} 
+		else {
 		    echo "<script type='text/javascript'>
 		    	window.confirm('Error Occured: Try check your credentials or try another username');
 		    	window.location.href = 'Home.php';

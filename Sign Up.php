@@ -127,14 +127,18 @@
 </head>
 
 <body>
+<!--Code for ribbon-->
 <p id = "TindersTitle"> TINDERS </p>
 <a href = "Index.php"><p id = "login"> LOG IN </p> </a>
 <p id = "Tinders"> TINDERS </p>
+
+<!--Code for username and password labels -->
 <p id = "newUserTitle"> new username: </p>
 <p id = "newPassTitle"> password: </p>
 <p id = "confPassTitle"> confirm password: </p>
 <img src = "logo.png" id = "logo"> </img>
 	
+<!--Code for form to register new user -->
 <form action = "signup.php" method="post">
 	<input type = "text" id ="newUser" name = "newUser" placeholder = " USERNAME" required>
 	<input type = "password" id = "newPass" name = "newPass" placeholder = " PASSWORD" required>

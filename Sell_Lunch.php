@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -19,6 +20,7 @@
 
 <!DOCTYPE html>
 <?php
+//prevent user from accessing page before logging in
 session_start();
 if ( isset( $_SESSION['user_id'] ) ) {
 } else {
@@ -249,6 +251,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
 	<p id = "Change">Sell Lunch</p>
+	<!--Backgrounds-->
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
 
@@ -264,6 +267,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		<option value="" hidden>PLEASE SELECT AN ITEM</option>
 		<?php 
 			if ($getProdNames) {
+				//get product names from database; updates live based on user input
 				while ($row=mysqli_fetch_array($getProdNames)) {
 					$prodName=$row["$collumn"];
 					echo "<option value = ".$prodName.">$prodName<br></option>";

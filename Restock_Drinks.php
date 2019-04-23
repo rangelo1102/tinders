@@ -1,4 +1,5 @@
 <?php
+//database credentials
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -18,15 +19,12 @@
 
 <!DOCTYPE html>
 <?php
-//session
+//session; prevent users from accessing the page without logging in
 session_start();
 if ( isset( $_SESSION['user_id'] ) ) {
 } else {
     header("Location: index.php");
 }
-
-
-
 ?>
 <html>
 <head>
@@ -377,10 +375,12 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 <body>
 	<p> </p>
-	<!--Banner -->
+	<!--Header-->
 	<p id = "Change">Restock Drinks</p>
+	<!--Backgrounds-->
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
+	<!--Ribbons-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
@@ -394,11 +394,14 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 	<!--New Product-->
 	<p id = "NameProdSide"> name (do not use spaces)</p>
+	<!--New Product price-->
 	<input type = "text" id = "DropDownProdName" name = "prodname" placeholder = " INPUT NAME">
 	<p id = "PriceProdSide"> price </p>
 	<input type = "number" id = "ProdPrice" name = "newprodprice"  placeholder=" INPUT PRICE">
+	<!--New Product qty-->
 	<p id = "QtyNewProdSide"> quantity</p>
 	<input type = "number" id = "QtyNewProdTextbox" name = " " placeholder=" INPUT QUANTITY">
+	<!--New Product production cost-->
 	<p id = "prodCostNew"> production cost</p>
 	<input type = "number" id = "NewProdCostTextBox" name = " " placeholder=" INPUT PROD COST">
 
@@ -408,6 +411,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<select required id = "DropDownProdNameCateg">
 		<option value="" hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A PRODUCT</option>
 		<?php 
+		//get product names from database to keep up with new stock
 			if ($getProdNames) {
 				while ($row=mysqli_fetch_array($getProdNames)) {
 					$prodName=$row["$collumn"];
@@ -416,10 +420,13 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			}
 			?>
 	</select>
+	<!--Update  Current Product price-->
 	<p id = "PriceOldSide"> price (leave empty to retain)</p>
 	<input type = "number" id = "OldProdPrice" placeholder=" INPUT PRICE"> </img>
+	<!--Update  Current Product qty-->
 	<p id = "QtyOldSide"> quantity (negative values to reduce stock)</p>
 	<input type = "number" id = "QtyOldProdTextbox" placeholder = " INPUT QUANTITY">
+	<!--Update  Current Product production cost-->
 	<p id = "OldProdCost"> production cost</p>
 	<input type = "number" id = "OldProdCostTextbox" placeholder = " INPUT PROD COST">
 

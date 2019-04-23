@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+//prevent user from accessing page without logging in
+session_start();
+if ( isset( $_SESSION['user_id'] ) ) {
+} else {
+    header("Location: index.php");
+}
+?>
 <html>
 <head>
 <meta name="utf-8" content = "width=device-width, initial-scale = 1">
@@ -144,19 +152,25 @@
 	}
 </style>
 <body>
+	<!--Backgrounds-->
 	<img id = "New"> </img>
 	<img id = "Old"> </img>
+	<!--Ribbon-->
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
 	<a href = "Restock_Categories.php" id = "RRestock"> RESTOCK </a>
 	<a href = "Menu_Categories.php" id = "RMenu"> REPORT </a>
 	<a href = "Sell_Categories.php" id = "RSell"> SELL </a>
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
+	<!--Page Header-->
 	<p id = "SellCategoriesLabel">Sell</p>
+
+	<!--Categories-->
 	<p id = SnacksLabel> Snacks </p>
 	<p id = "DrinksLabel">Drinks </p>
 	<p id = "LunchLabel"> Lunch </p>
 	<p id = "SelectACategory"> Please select a category. </p>
+	<!--Hyperlink circles; directs to snacks, drinks, and lunch respectively-->
 	<a href = "Sell_Snacks.php"><img id = "SnacksCircle"></a>
 	<a href = "Sell_Drinks.php"><img id = "DrinksCircle"></a>
 	<a href = "Sell_Lunch.php"><img id = "LunchCircle"></a>
