@@ -57,26 +57,25 @@ if (isset($oldprodname)&&isset($oldprodprice)&&isset($oldprodqty)&&isset($oldpro
 	//proceed to UPDATE
 	$dankcount = $dankcount + 1;
 	if ($oldprodqty > $zero and $oldprodqty <= $availableStock) { //update stock given proper credentials
-	$getrow = "SELECT * FROM products_lunch";
-	$result = $conn->query($getrow);
-	$updateStock = "UPDATE products_drinks
-		SET amount_product = amount_product - $quantity, sold_product = sold_product + $quantity, revenue = revenue + ($quantity * price_product)
-		WHERE name_product = '$product';
+		$getrow = "SELECT * FROM products_lunch";
+		$result = $conn->query($getrow);
+		$updateStock = "UPDATE products_lunch
+			SET amount_product = amount_product + $oldprodqty, price_product = $oldprodprice, production_cost = $oldprodcost)
+			WHERE name_product = '".$oldprodname."';
+			";
+		$updateTable = $conn->query($updateStock);	
+		echo "<script type='text/javascript'>
+			window.confirm('Restock successful.');
+			window.location.href = 'Restock_Categories.php';
+			</script>
 		";
-	$updateTable = $conn->query($updateStock);	
-	echo "<script type='text/javascript'>
-		window.confirm('Sale successful.');
-		window.location.href = 'Sell_Categories.php';
+	}elseif ($quantity < $zero){ //prevent negative input
+		echo "<script type='text/javascript'>
+		window.confirm('Please select a positive integer.');
+		window.location.href = 'Restock_Lunch.php';
 		</script>
-	";
-	}
-elseif ($quantity < $zero){ //prevent negative input
-	echo "<script type='text/javascript'>
-	window.confirm('Please select a positive integer.');
-	window.location.href = 'Sell_Drinks.php';
-	</script>
-	";
-	}
+		";
+		}
 }else {
 	echo "<script type='text/javascript'>
 		window.confirm('Please recheck your inputs. Remember to complete all the input boxes!');
