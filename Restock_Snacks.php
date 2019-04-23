@@ -408,7 +408,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 	<!--Old Product Update Details-->
 	<p id = "NameOldSide"> name (do not use spaces)</p>
-	<select required id = "DropDownProdNameCateg">
+	<select id = "DropDownProdNameCateg">
 		<option value="" hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A PRODUCT</option>
 		<?php //get product names from database to keep up with new products
 			if ($getProdNames) {
