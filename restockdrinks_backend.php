@@ -16,7 +16,7 @@ $zero = 0;
 $product = $_POST['product'];
 $quantity = $_POST['qty'];
 settype($quantity, "integer");
-$stockQuery = "SELECT amount_product FROM products_lunch WHERE name_product= '$product'";
+$stockQuery = "SELECT amount_product FROM products_drinks WHERE name_product= '$product'";
 $getAvailableStock = $conn->query($stockQuery);
 $res = mysqli_fetch_row($getAvailableStock);
 $availableStock = $res[0]; 
@@ -28,9 +28,9 @@ $availableStock = $res[0];
 
 //update quantity of available products
 if ($quantity > $zero and $quantity <= $availableStock) { //update stock given proper input
-	$getrow = "SELECT * FROM products_lunch";
+	$getrow = "SELECT * FROM products_drinks";
 	$result = $conn->query($getrow);
-	$updateStock = "UPDATE products_lunch
+	$updateStock = "UPDATE products_drinks
 		SET amount_product = amount_product - $quantity, sold_product = sold_product + $quantity, revenue = revenue + ($quantity * price_product)
 		WHERE name_product = '$product';
 		";

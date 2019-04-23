@@ -431,7 +431,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<input type = "number" id = "OldProdCostTextbox" placeholder = " INPUT PROD COST">
 
 	<!--UpdateButton-->
-	<img id = "UpdateButton"> </img>
-	<p id = "Update"> update </p>
+	<button type = "submit" id = "UpdateButton" value = "restock">update</button>
 </body>
 </html>

@@ -13,46 +13,55 @@ if ($conn->connect_error) {
 
 // initialize; get form html file
 $zero = 0;
-$product = $_POST['product'];
-$quantity = $_POST['qty'];
-settype($quantity, "integer");
-$stockQuery = "SELECT amount_product FROM products_lunch WHERE name_product= '$product'";
-$getAvailableStock = $conn->query($stockQuery);
-$res = mysqli_fetch_row($getAvailableStock);
-$availableStock = $res[0]; 
-//$availableStock = mysqli_fetch_object($getAvailableStockFromTable);
+$dankcount = 0;
+//new product
+$newprodname = $_POST['newprodname'];
+$newprodprice = $_POST['newprodprice']
+$newprodqty = $_POST['newprodqty'];settype($newprodqty, "integer");
+$newprodcost = $_POST['newprodcost'];settype($newprodcost, "integer");
+//old product
+$oldprodname = $_POST['oldprodname'];
+$oldprodprice = $_POST['oldprodprice']
+$oldprodqty = $_POST['oldprodqty'];settype($oldprodqty, "integer");
+$oldprodcost = $_POST['oldprodcost'];settype($oldprodcost, "integer");
 
-
-
-//select products table
-
-//update quantity of available products
-if ($quantity > $zero and $quantity <= $availableStock) { //update stock given proper input
-	$getrow = "SELECT * FROM products_lunch";
-	$result = $conn->query($getrow);
-	$updateStock = "UPDATE products_lunch
-		SET amount_product = amount_product - $quantity, sold_product = sold_product + $quantity, revenue = revenue + ($quantity * price_product)
-		WHERE name_product = '$product';
-		";
-	$updateTable = $conn->query($updateStock);	
-	echo "<script type='text/javascript'>
-		window.confirm('Sale successful.');
-		window.location.href = 'Sell_Categories.php';
-		</script>
+//update new product
+if (isset($newprodname)&&isset($newprodprice)&&isset($newprodqty)&&isset($newprodcost)){
+	//proceed INSERT INTO 
+	if ($newprodprice<$zero||$newprodqty<$zero||$newprodqty<$zero){
+		echo "<script type='text/javascript'>
+			window.confirm('Nice Try Ultron smh');
+			window.location.href = 'Restock_Lunch.php';
+			</script>"
+	}else{
+	$newprodquery="INSERT INTO products_lunch (name_product, amount_product, price_product, production_cost) 
+			VALUES ('".$newprodname."','".$newprodprice."','".$newprodqty."','".$newprodcost."')
 	";
-	}
-elseif ($quantity < $zero){ //prevent negative input
+	$newproductquery = mysqli_query($conn, $newprodquery);
+	$dankcount = $dankcount + 1;
+}
+}else {
 	echo "<script type='text/javascript'>
-	window.confirm('Please select a positive integer.');
-	window.location.href = 'Sell_Lunch.php';
-	</script>
-	";
-	}
-elseif ($quantity >= $availableStock) { //prevent inputting demand higher than stock
+		window.confirm('Please recheck your inputs. Remember to complete all the input boxes!');
+		window.location.href = 'Restock_Lunch.php';
+		</script>"
+}
+
+//update old product
+if (isset($oldprodname)&&isset($oldprodprice)&&isset($oldprodqty)&&isset($oldprodcost)){
+	//proceed to UPDATE
+	$dankcount = $dankcount + 1;
+
+}else {
 	echo "<script type='text/javascript'>
-	window.confirm('There are not enough goods. Please restock.');
-	window.location.href = 'Sell_Lunch.php';
-	</script>
-	";	
+		window.confirm('Please recheck your inputs. Remember to complete all the input boxes!');
+		window.location.href = 'Restock_Lunch.php';
+		</script>"
+}
+if ($dankcount<=1&&$dankcount>=1){
+	echo "<script type='text/javascript'>
+		window.confirm('Please recheck your inputs. Remember to complete all the input boxes!');
+		window.location.href = 'Restock_Lunch.php';
+		</script>"
 }
 ?>
