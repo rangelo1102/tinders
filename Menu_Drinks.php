@@ -222,20 +222,17 @@
 
 
 	//get most popular product
-	/*$getMostPopQuery = "SELECT a.sold_product, a.name_product
+	$getMostPopQuery = "SELECT a.sold_product, a.name_product
 			FROM products_drinks a
 			INNER JOIN (
 				SELECT id, MAX(sold_product) sold_product
 				FROM products_drinks
-				GROUP BY id
+				GROUP BY sold_product
 			)b ON a.id = b.id AND a.sold_product = b.sold_product";
 	$getMostPop = mysqli_query($conn, $getMostPopQuery);
 	$getMP = mysqli_fetch_assoc($getMostPop);
 	$legitMostPop = $getMP['name_product'];
-	echo "<p id = 'MostPopularProd'> Most Popular Product: $legitMostPop </p>";*/
-	$mostPopQuery = mysqli_query("SELECT id, MAX(sold_product)
-				FROM products_drinks");
-	$getMostPop = mysqli_query("SELECT name_product FROM products_drinks WHERE sold_product = $mostPopQuery");
+	echo "<p id = 'MostPopularProd'> Most Popular Product: $legitMostPop </p>";
 	?>
 	
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2019 at 02:00 PM
+-- Generation Time: Apr 23, 2019 at 02:25 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -40,7 +40,7 @@ CREATE TABLE `dailyreports` (
 --
 
 INSERT INTO `dailyreports` (`id`, `day`, `profit`, `revenue`) VALUES
-(13, '2019-04-23', -526, 620);
+(13, '2019-04-23', -456, 690);
 
 -- --------------------------------------------------------
 
