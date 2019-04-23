@@ -138,7 +138,7 @@
 	}
 	#TotalProf {
 		font-family: raleway;
-		font-size: 30px;
+		font-size: 25px;
 		font-weight: bold;
 		position: absolute;
 		left: 1000px;
@@ -146,11 +146,19 @@
 	}
 	#TotalRev {
 		font-family: raleway;
-		font-size: 30px;
+		font-size: 25px;
 		font-weight: bold;
 		position: absolute;
 		left: 1000px;
 		top: 70px;
+	}
+	#MostPopularProd {
+		font-family:raleway;
+		font-size: 25px;
+		font-weight: bold;
+		position: absolute;
+		left: 1000px;
+		top: 130px;
 	}
 </style>
 <body>
@@ -211,6 +219,23 @@
 	$drinksProfit = $legitRev - $legitCost;
 	echo "<p id = 'TotalRev'> Total Revenue: Php $legitRev</p>
 		  <p id = 'TotalProf'> Total Profit: Php $drinksProfit </p>";	
+
+
+	//get most popular product
+	/*$getMostPopQuery = "SELECT a.sold_product, a.name_product
+			FROM products_drinks a
+			INNER JOIN (
+				SELECT id, MAX(sold_product) sold_product
+				FROM products_drinks
+				GROUP BY id
+			)b ON a.id = b.id AND a.sold_product = b.sold_product";
+	$getMostPop = mysqli_query($conn, $getMostPopQuery);
+	$getMP = mysqli_fetch_assoc($getMostPop);
+	$legitMostPop = $getMP['name_product'];
+	echo "<p id = 'MostPopularProd'> Most Popular Product: $legitMostPop </p>";*/
+	$mostPopQuery = mysqli_query("SELECT id, MAX(sold_product)
+				FROM products_drinks");
+	$getMostPop = mysqli_query("SELECT name_product FROM products_drinks WHERE sold_product = $mostPopQuery");
 	?>
 	
 </body>

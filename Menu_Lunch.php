@@ -10,7 +10,7 @@
     			die("Connection failed: " . $conn->connect_error);
 			}
 
-		$table = "products_drinks";
+	$table = "products_lunch";
 	$nameCollumn = "name_product";
 	$stockCollumn = "amount_product";
 	$priceCollumn = "price_product";
@@ -130,7 +130,7 @@
 	}
 	#TotalProf {
 		font-family: raleway;
-		font-size: 30px;
+		font-size: 25px;
 		font-weight: bold;
 		position: absolute;
 		left: 1000px;
@@ -138,11 +138,19 @@
 	}
 	#TotalRev {
 		font-family: raleway;
-		font-size: 30px;
+		font-size: 25px;
 		font-weight: bold;
 		position: absolute;
 		left: 1000px;
 		top: 70px;
+	}
+	#MostPopularProd {
+		font-family:raleway;
+		font-size: 25px;
+		font-weight: bold;
+		position: absolute;
+		left: 1000px;
+		top: 130px;
 	}
 </style>
 <body>
@@ -203,6 +211,13 @@
 	$lunchProfit = $legitRev - $legitCost;
 	echo "<p id = 'TotalRev'> Total Revenue: Php $legitRev</p>
 		  <p id = 'TotalProf'> Total Profit: Php $lunchProfit </p>";	
+
+	//get most popular product
+	$getMostPopQuery = "SELECT name_product, MAX(sold_product) FROM products_lunch GROUP BY name_product";
+	$getMostPop = mysqli_query($conn, $getMostPopQuery);
+	$getMP = mysqli_fetch_assoc($getMostPop);
+	$legitMostPop = $getMP['name_product'];
+	echo "<p id = 'MostPopularProd'> Most Popular Product: $legitMostPop </p>";
 	?>
 </body>
 </html>
