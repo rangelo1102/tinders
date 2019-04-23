@@ -148,6 +148,23 @@
 		left: 1000px;
 		top: 70px;
 	}
+	#EditReportsCircle {
+		background-color: dimgray;
+		height: 45px;
+		width: 45px;
+		position: absolute;
+		border-radius: 50%;
+		top: 105px;
+		left: 1000px;
+	}
+	#EditReportsLabel {
+		position: absolute;
+		font-size: 30px;
+		left: 1050px;
+		top: 80px;
+		font-family: raleway;
+		font-weight: bold;	
+	}
 </style>
 <body>
 	<img id = "New"> </img>
@@ -159,6 +176,8 @@
 	<a href = "ChangeStock_Categories.php" id = "RChange">CHANGE</a>
 	<a href = "logout.php" id = "RLogout"> LOG OUT</a>
 	<p id = "ReportMenuLabel"> Daily Reports</p>
+	<a href = "DeleteReports.php"><img id = "EditReportsCircle"></a>
+	<p id = "EditReportsLabel">Delete a Report </p>
 	<table id = "ReportTable">
 		<tr>
 			<th>Date (YYYY-MM-DD)</th>
