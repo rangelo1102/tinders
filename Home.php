@@ -1,3 +1,36 @@
+<?php
+	$host = "localhost";
+	$user = "root";
+	$pass = "";
+	$db = "tinders";
+
+	//connecting to db 
+	$conn = new mysqli($host,$user,$pass,$db);
+	if ($conn->connect_error) {
+    			die("Connection failed: " . $conn->connect_error);
+			}
+
+	$checkIfDateExistsQuery = "SELECT id
+		FROM dailyreports
+		WHERE day = curdate()";
+	$checkIfDateExists = mysqli_query($conn, $checkIfDateExistsQuery);
+	$row = mysqli_fetch_array($checkIfDateExists);
+
+	if ($row === null) {
+		$resetDrinksQuery = "UPDATE products_drinks
+		SET revenue = 0";
+		$resetDrinks = mysqli_query($conn, $resetDrinksQuery);
+
+		$resetSnacksQuery = "UPDATE products_snacks
+		SET revenue = 0";
+		$resetDrinks = mysqli_query($conn, $resetSnacksQuery);
+
+		$resetLunchQuery = "UPDATE products_lunch
+		SET revenue = 0";
+		$resetDrinks = mysqli_query($conn, $resetLunchQuery);
+	}
+		?>
+
 <!DOCTYPE html>
 <?php
 session_start();

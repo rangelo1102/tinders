@@ -163,6 +163,25 @@
 			left: 480px;
 			font-size: 50px;
 	}
+	#DailyReportsCirlce {
+			background-color: dimgray;
+			height: 95px;
+			width: 95px;
+			position: absolute;
+			border-radius: 50%;
+			top: 580px;
+			left: 705px;
+	}
+	#DailyReportsLabel {
+			font-size: 35px;
+			position: absolute;
+			top: 650px;
+			left: 610px;
+			font-family: raleway;
+			font-weight: bold;
+			color: black;		
+	}
+
 </style>
 <body>
 	<a href = "Home.php" id = "TindersTitle">TINDERS</a>
@@ -180,6 +199,8 @@
 	<a href = "Menu_Snacks.php"><img id = "SnacksCircle"></a>
 	<a href = "Menu_Drinks.php"><img id = "DrinksCircle"></a>
 	<a href = "Menu_Lunch.php"><img id = "LunchCircle"></a>
+	<a href = "DailyReports.php"><img id = "DailyReportsCirlce"> </a>
+	<p id = "DailyReportsLabel"> View Daily Reports </p>
 
 	<?php	
 	//get snacks profit
@@ -220,8 +241,25 @@
 
 	$overallTindersRevenue = $legitSnacksRev + $legitLunchRev + $legitDrinksRev;
 	$overallTindersProfit = $snacksProfit + $lunchProfit + $drinksProfit;
-	echo "<p id = 'OverallTindersRev'> Overall Revenue: Php $overallTindersRevenue </p>
-			<p id = 'OverallTindersProf'> Overall Profit: Php $overallTindersProfit </p>";
+	echo "<p id = 'OverallTindersRev'> Today's Revenue: Php $overallTindersRevenue </p>
+			<p id = 'OverallTindersProf'> Today's Profit: Php $overallTindersProfit </p>";
+
+	$checkIfDateExistsQuery = "SELECT id
+		FROM dailyreports
+		WHERE day = curdate()";
+	$checkIfDateExists = mysqli_query($conn, $checkIfDateExistsQuery);
+	$row = mysqli_fetch_array($checkIfDateExists);
+
+	if ($row === null) {
+		$updateReportTableQuery = "INSERT INTO dailyreports(day, profit, revenue) VALUES (curdate(), $overallTindersProfit, $overallTindersRevenue)";
+		$updateReportTable = mysqli_query($conn, $updateReportTableQuery);	
+	}
+	else {
+		$updateReportTableQuery = "UPDATE dailyreports
+			SET profit = $overallTindersProfit, revenue = $overallTindersRevenue
+			WHERE day = curdate()";
+		$updateReportTable = mysqli_query($conn, $updateReportTableQuery);
+	}
 
 	?>
 	
