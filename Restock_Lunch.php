@@ -295,7 +295,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		#QtyOldSide {
 			color: black;
 			position: absolute;
-			left: 850px;
+			left: 1260px;
 			top: 390px;
 			font-family: raleway;
 			font-weight: bold;
@@ -431,7 +431,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p id = "PriceOldSide"> price (leave empty to retain)</p>
 	<input type = "number" id = "OldProdPrice" placeholder=" INPUT PRICE" name="oldprodprice"> </img>
 	<!--update current products qty-->
-	<p id = "QtyOldSide"> quantity (negative values to reduce stock)</p>
+	<p id = "QtyOldSide"> quantity</p>
 	<input type = "number" id = "QtyOldProdTextbox" placeholder = " INPUT QUANTITY" name="oldprodqty" >
 	<!--update current products production cost-->
 	<p id = "OldProdCost"> production cost</p>

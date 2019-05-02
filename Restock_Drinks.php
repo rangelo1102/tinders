@@ -283,7 +283,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		#QtyOldSide {
 			color: black;
 			position: absolute;
-			left: 850px;
+			left: 1260px;
 			top: 390px;
 			font-family: raleway;
 			font-weight: bold;
@@ -386,23 +386,24 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<p id = "Product"> new product</p>
 	<p id = "OldProd"> old product</p>
 
+	<form action = "restockdrinks_backend.php" method = "POST">
 	<!--New Product-->
 	<p id = "NameProdSide"> name (do not use spaces)</p>
 	<!--New Product price-->
-	<input type = "text" id = "DropDownProdName" name = "prodname" placeholder = " INPUT NAME">
+	<input type = "text" id = "DropDownProdName" name = "newprodname" placeholder = " INPUT NAME">
 	<p id = "PriceProdSide"> price </p>
 	<input type = "number" id = "ProdPrice" name = "newprodprice"  placeholder=" INPUT PRICE">
 	<!--New Product qty-->
 	<p id = "QtyNewProdSide"> quantity</p>
-	<input type = "number" id = "QtyNewProdTextbox" name = " " placeholder=" INPUT QUANTITY">
+	<input type = "number" id = "QtyNewProdTextbox" name = "newprodqty" placeholder=" INPUT QUANTITY">
 	<!--New Product production cost-->
 	<p id = "prodCostNew"> production cost</p>
-	<input type = "number" id = "NewProdCostTextBox" name = " " placeholder=" INPUT PROD COST">
+	<input type = "number" id = "NewProdCostTextBox" name = "newprodcost" placeholder=" INPUT PROD COST">
 
 
 	<!--Old Product-->
 	<p id = "NameOldSide"> name (do not use spaces)</p>
-	<select id = "DropDownProdNameCateg">
+	<select id = "DropDownProdNameCateg" name = "oldprodname">
 		<option value="" hidden id = "DropDownProdCategContentPlaceholder">CHOOSE A PRODUCT</option>
 		<?php 
 		//get product names from database to keep up with new stock
@@ -416,15 +417,16 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	</select>
 	<!--Update  Current Product price-->
 	<p id = "PriceOldSide"> price (leave empty to retain)</p>
-	<input type = "number" id = "OldProdPrice" placeholder=" INPUT PRICE"> </img>
+	<input type = "number" id = "OldProdPrice" name = "oldprodprice" placeholder=" INPUT PRICE"> </img>
 	<!--Update  Current Product qty-->
-	<p id = "QtyOldSide"> quantity (negative values to reduce stock)</p>
-	<input type = "number" id = "QtyOldProdTextbox" placeholder = " INPUT QUANTITY">
+	<p id = "QtyOldSide"> quantity</p>
+	<input type = "number" id = "QtyOldProdTextbox" name = "oldprodqty" placeholder = " INPUT QUANTITY">
 	<!--Update  Current Product production cost-->
 	<p id = "OldProdCost"> production cost</p>
-	<input type = "number" id = "OldProdCostTextbox" placeholder = " INPUT PROD COST">
+	<input type = "number" id = "OldProdCostTextbox" name = "oldprodcost" placeholder = " INPUT PROD COST">
 
 	<!--UpdateButton-->
 	<button type = "submit" id = "UpdateButton" value = "restock">update</button>
+</form>
 </body>
 </html>
