@@ -176,19 +176,19 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			text-align: center;
 			position: absolute;
 			top: 520px;
-			left: 250px;
+			left: 230px;
 		}
 	#MenuDesc {
 			text-align: center;
 			position: absolute;
 			top: 520px;
-			left: 660px;
+			left: 620px;
 		}
 	#SellDesc {
 			text-align: center;
 			position: absolute;
 			top: 520px;
-			left: 1070px;
+			left: 1060px;
 		}
 	#ChangeCirc {
 			background-color: dimgray;
@@ -214,6 +214,9 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			left: 683px;
 			top: 690px;
 		}
+	p {
+		font-family: raleway;
+	}
 	</style>
 </head>
 

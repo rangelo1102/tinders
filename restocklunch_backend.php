@@ -48,40 +48,16 @@ if ($newprodname!=""&&$newprodprice!=0&&$newprodqty!=0&&$newprodcost!=0){
 	}
 }
 
-/*
 //update old product
-if ($oldprodname!=""&&$oldprodqty!=null&&$oldprodcost!=null){
-	//proceed to UPDATE
+if ($oldprodname!=""){
 	$dankcount = $dankcount + 1;
-		if($oldprodprice>$zero){
-			$updateStock = "UPDATE products_lunch SET amount_product = amount_product + $oldprodqty, price_product = $oldprodprice, production_cost = $oldprodcost WHERE name_product = '".$oldprodname."'";
-			$updateTable = mysqli_query($conn, $updateStock);
-		}else {
-			$updateStock = "UPDATE products_lunch
-				SET amount_product = amount_product + '".$oldprodqty."', production_cost = '".$oldprodcost."')
-				WHERE name_product = '".$oldprodname."'
-				";
-			$updateTable = mysqli_query($conn, $updateStock);
-		}
-
-	}elseif ($oldprodqty < $zero){ //prevent negative input
+	if ($oldprodprice<$zero||$oldprodqty<$zero||$oldprodcost<$zero){//check for negative input
 		echo "<script type='text/javascript'>
 		window.confirm('Please select a positive integer.');
 		window.location.href = 'Restock_Lunch.php';
 		</script>
 		";
-}
-*/
-
-if ($oldprrodname!=""){
-	$dankcount = $dankcount + 1;
-	if ($oldprodprice<$zero||$oldprodqty>$zero||$oldprodcost>$zero){
-		echo "<script type='text/javascript'>
-		window.confirm('Please select a positive integer.');
-		window.location.href = 'Restock_Lunch.php';
-		</script>
-		";
-	}else{
+	}else{ //accept user input; go through which statements are not null to choose which ones to update
 		if ($oldprodprice!=null){
 			$updateStock = "UPDATE products_lunch 
 							SET price_product = $oldprodprice 
