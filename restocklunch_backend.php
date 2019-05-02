@@ -48,6 +48,7 @@ if ($newprodname!=""&&$newprodprice!=0&&$newprodqty!=0&&$newprodcost!=0){
 	}
 }
 
+/*
 //update old product
 if ($oldprodname!=""&&$oldprodqty!=null&&$oldprodcost!=null){
 	//proceed to UPDATE
@@ -69,6 +70,40 @@ if ($oldprodname!=""&&$oldprodqty!=null&&$oldprodcost!=null){
 		window.location.href = 'Restock_Lunch.php';
 		</script>
 		";
+}
+*/
+
+if ($oldprrodname!=""){
+	$dankcount = $dankcount + 1;
+	if ($oldprodprice<$zero||$oldprodqty>$zero||$oldprodcost>$zero){
+		echo "<script type='text/javascript'>
+		window.confirm('Please select a positive integer.');
+		window.location.href = 'Restock_Lunch.php';
+		</script>
+		";
+	}else{
+		if ($oldprodprice!=null){
+			$updateStock = "UPDATE products_lunch 
+							SET price_product = $oldprodprice 
+							WHERE name_product = '".$oldprodname."'
+							";
+			$updateTable = mysqli_query($conn, $updateStock);
+		}
+		if ($oldprodqty!=null){
+			$updateStock = "UPDATE products_lunch 
+							SET amount_product = amount_product + $oldprodqty 
+							WHERE name_product = '".$oldprodname."'
+							";
+			$updateTable = mysqli_query($conn, $updateStock);
+		}
+		if ($oldprodcost!=null){
+			$updateStock = "UPDATE products_lunch 
+							SET production_cost = $oldprodcost 
+							WHERE name_product = '".$oldprodname."'
+							";
+			$updateTable = mysqli_query($conn, $updateStock);
+		}
+	}
 }
 
 if ($dankcount>=1){
